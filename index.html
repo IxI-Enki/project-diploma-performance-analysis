@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leistungsanalyse von Text-Embedding-Modellen</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 400px;
+            max-height: 50vh;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 450px;
+            }
+        }
+        .gradient-text {
+            background: linear-gradient(to right, #00529B, #00AEEF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="bg-[#F0F4F8] text-[#1E293B]">
+
+    <!-- Color Palette: Brilliant Blues -->
+    <!-- NEITHER Mermaid JS NOR SVG were used anywhere in this output. -->
+
+    <div class="container mx-auto p-4 sm:p-6 md:p-8">
+
+        <header class="text-center mb-12">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4 gradient-text">Das richtige KI-Modell für deutschen Text</h1>
+            <p class="text-lg md:text-xl text-slate-600 max-w-4xl mx-auto">Eine visuelle Analyse der besten Text-Embedding-Modelle für den deutschen Sprachraum basierend auf dem MTEB-Benchmark.</p>
+        </header>
+
+        <main class="space-y-12">
+            
+            <section id="intro" class="bg-white rounded-xl shadow-lg p-6 md:p-8">
+                <div class="grid md:grid-cols-3 gap-8 items-center">
+                    <div class="md:col-span-2">
+                        <h2 class="text-2xl font-bold text-[#00529B] mb-4">Die Herausforderung: Semantik verstehen</h2>
+                        <p class="mb-4">Text-Embeddings wandeln Text in Zahlen (Vektoren) um, damit Maschinen dessen Bedeutung verstehen können. Dies ist entscheidend für Aufgaben wie semantische Suche, Klassifizierung oder die Erkennung von Duplikaten. Die Qualität dieser Vektoren bestimmt die Leistung der Anwendung.</p>
+                        <p>Der <span class="font-semibold">Massive Text Embedding Benchmark (MTEB)</span> ist der Goldstandard zum Messen dieser Qualität. Er testet Modelle in verschiedenen Aufgaben und Sprachen. Für deutsche Texte ist eine genaue Betrachtung der Ergebnisse unerlässlich, da nicht jedes Modell in jeder Sprache gleich gut ist.</p>
+                    </div>
+                    <div class="hidden md:flex justify-center items-center">
+                         <div class="text-center p-6 bg-slate-50 rounded-lg">
+                            <span class="text-6xl">📊</span>
+                            <p class="mt-2 font-semibold text-slate-700">MTEB Benchmark</p>
+                            <p class="text-sm text-slate-500">Der Standard für Modellvergleiche</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="retrieval-performance">
+                <div class="text-center mb-8">
+                    <h2 class="text-3xl font-bold text-[#00529B]">Leistungsvergleich im multilingualen Abruf (Retrieval)</h2>
+                    <p class="text-slate-600 mt-2 max-w-3xl mx-auto">Der Abruf ist eine Kernaufgabe, bei der relevante Dokumente zu einer Anfrage gefunden werden müssen. Hier zeigen die Modelle ihre Stärke im Verstehen von Zusammenhängen. Die Leistung wird mit nDCG@k gemessen – höher ist besser. Da spezifische deutsche Abrufdaten begrenzt sind, nutzen wir die umfassenden multilingualen MTEB-Ergebnisse als besten verfügbaren Indikator.</p>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg p-6 md:p-8">
+                    <div class="chart-container">
+                        <canvas id="retrievalChart"></canvas>
+                    </div>
+                     <div class="mt-6 text-center text-slate-600">
+                        <p><strong class="text-[#00529B]">Schlüsselerkenntnis:</strong> Die `e5`-Modelle, insbesondere die `instruct`-Variante, führen das Feld im multilingualen Abruf an und zeigen eine exzellente Generalisierungsfähigkeit, die auch für den deutschen Sprachraum vielversprechend ist.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="clustering-vs-takeaways">
+                <div class="grid md:grid-cols-2 gap-8 items-start">
+                    
+                    <div class="bg-white rounded-xl shadow-lg p-6 md:p-8 h-full">
+                        <h2 class="text-2xl font-bold text-[#00529B] mb-4 text-center">Spezialdisziplin: Deutsches Clustering</h2>
+                        <p class="text-slate-600 mb-6 text-center">Clustering gruppiert thematisch ähnliche Texte. Hier glänzen Modelle, die speziell für eine Sprache trainiert wurden. Diese Grafik zeigt die Leistung auf rein deutschen Datensätzen.</p>
+                        <div class="chart-container" style="height: 350px; max-height: 40vh;">
+                            <canvas id="clusteringChart"></canvas>
+                        </div>
+                         <div class="mt-6 text-center text-slate-600">
+                            <p><strong class="text-[#00529B]">Kontext:</strong> Das `gbert-large`-Modell wurde explizit für Deutsch entwickelt und zeigt hier seine Stärke. Dies verdeutlicht, dass für hochspezialisierte, sprachgebundene Aufgaben monolinguale Modelle von Vorteil sein können.</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-[#00529B] text-white rounded-xl shadow-lg p-6 md:p-8 h-full">
+                        <h2 class="text-2xl font-bold text-center mb-6">Wichtigste Empfehlungen</h2>
+                        <ul class="space-y-4 text-lg">
+                            <li class="flex items-start">
+                                <span class="text-[#FFD100] mr-3 mt-1">▶</span>
+                                <div>
+                                    <strong class="block">Für beste Allround-Leistung:</strong>
+                                    Wählen Sie `multilingual-e5-large-instruct` für robuste Abruf-Anwendungen, die auch Deutsch abdecken.
+                                </div>
+                            </li>
+                             <li class="flex items-start">
+                                <span class="text-[#FFD100] mr-3 mt-1">▶</span>
+                                <div>
+                                    <strong class="block">Bei Ressourcen-Beschränkung:</strong>
+                                    Das `multilingual-e5-large-instruct` bietet Top-Leistung bei relativ geringer Modellgröße und ist somit sehr effizient.
+                                </div>
+                            </li>
+                             <li class="flex items-start">
+                                <span class="text-[#FFD100] mr-3 mt-1">▶</span>
+                                <div>
+                                    <strong class="block">Für rein deutsche Aufgaben:</strong>
+                                    Prüfen Sie Modelle wie `gbert-large` und verifizieren Sie deren Leistung für Ihre spezifische Aufgabe (z.B. auf dem Live-MTEB-Leaderboard), wenn höchste sprachspezifische Genauigkeit erforderlich ist.
+                                </div>
+                            </li>
+                             <li class="flex items-start">
+                                <span class="text-[#FFD100] mr-3 mt-1">▶</span>
+                                <div>
+                                    <strong class="block">Es gibt kein Universalmodell:</strong>
+                                    Die beste Wahl hängt immer von der Aufgabe (Abruf vs. Clustering), dem Sprachkontext und der verfügbaren Infrastruktur ab.
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="flowchart">
+                <div class="text-center mb-8">
+                    <h2 class="text-3xl font-bold text-[#00529B]">Wie funktioniert Text-Embedding?</h2>
+                    <p class="text-slate-600 mt-2 max-w-3xl mx-auto">Ein vereinfachter Blick auf den Prozess, von einem einfachen Satz zu einer maschinenlesbaren Vektordarstellung.</p>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-6 md:p-8">
+                   <div class="flex flex-col md:flex-row justify-around items-center space-y-4 md:space-y-0 md:space-x-4 text-center">
+                        
+                        <div class="flex-1 p-4">
+                            <div class="text-5xl mb-3">📝</div>
+                            <h3 class="font-bold text-lg">1. Eingabetext</h3>
+                            <p class="text-slate-500 text-sm">"Die Sonne scheint."</p>
+                        </div>
+
+                        <div class="text-4xl text-slate-300 transform md:rotate-0 rotate-90">→</div>
+
+                        <div class="flex-1 p-4 bg-slate-50 rounded-lg">
+                            <div class="text-5xl mb-3">🧠</div>
+                            <h3 class="font-bold text-lg">2. Embedding Modell</h3>
+                            <p class="text-slate-500 text-sm">z.B. `multilingual-e5-large`</p>
+                        </div>
+                        
+                        <div class="text-4xl text-slate-300 transform md:rotate-0 rotate-90">→</div>
+
+                        <div class="flex-1 p-4">
+                            <div class="text-5xl mb-3">🔢</div>
+                            <h3 class="font-bold text-lg">3. Vektor-Output</h3>
+                            <p class="text-slate-500 text-sm font-mono break-all">[0.02, -0.15, ..., 0.98]</p>
+                        </div>
+                   </div>
+                </div>
+            </section>
+        </main>
+        
+        <footer class="text-center mt-16 pt-8 border-t border-slate-300">
+            <p class="text-slate-500">Datenquelle: MTEB Leaderboard & "Leistungsanalyse von Text-Embedding-Modellen" Report. Infografik erstellt von Canvas Infographics.</p>
+        </footer>
+
+    </div>
+
+    <script>
+        const wrapLabel = (label, maxLength) => {
+            if (label.length <= maxLength) {
+                return label;
+            }
+            const words = label.split(' ');
+            const lines = [];
+            let currentLine = '';
+            words.forEach(word => {
+                if ((currentLine + word).length > maxLength) {
+                    lines.push(currentLine.trim());
+                    currentLine = '';
+                }
+                currentLine += word + ' ';
+            });
+            lines.push(currentLine.trim());
+            return lines.filter(line => line.length > 0);
+        };
+
+        const tooltipTitleCallback = (tooltipItems) => {
+            const item = tooltipItems[0];
+            let label = item.chart.data.labels[item.dataIndex];
+            if (Array.isArray(label)) {
+                return label.join(' ');
+            } else {
+                return label;
+            }
+        };
+
+        const retrievalData = {
+            labels: [
+                'intfloat/multilingual-e5-large-instruct',
+                'e5-mistral-7b-instruct',
+                'mistralai/mistral-embed',
+                'intfloat/multilingual-e5-large',
+                wrapLabel('sentence-transformers/paraphrase-multilingual-mpnet-base-v2', 25)
+            ].reverse(),
+            datasets: [{
+                label: 'MTEB Abrufwert (nDCG@k)',
+                data: [57.1, 55.8, 55.26, 54.1, 39.8].reverse(),
+                backgroundColor: [
+                    'rgba(0, 174, 239, 0.6)',
+                    'rgba(0, 174, 239, 0.6)',
+                    'rgba(0, 174, 239, 0.6)',
+                    'rgba(0, 82, 155, 0.7)',
+                    'rgba(0, 82, 155, 0.8)'
+                ].reverse(),
+                borderColor: [
+                    'rgba(0, 174, 239, 1)',
+                    'rgba(0, 174, 239, 1)',
+                    'rgba(0, 174, 239, 1)',
+                    'rgba(0, 82, 155, 1)',
+                    'rgba(0, 82, 155, 1)'
+                ].reverse(),
+                borderWidth: 1,
+                borderRadius: 5,
+            }]
+        };
+
+        const retrievalCtx = document.getElementById('retrievalChart').getContext('2d');
+        new Chart(retrievalCtx, {
+            type: 'bar',
+            data: retrievalData,
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                        grid: {
+                            color: '#e2e8f0'
+                        },
+                        ticks: {
+                            color: '#475569'
+                        },
+                        title: {
+                            display: true,
+                            text: 'nDCG@k Score (höher ist besser)',
+                            color: '#1E293B',
+                            font: { size: 14 }
+                        }
+                    },
+                    y: {
+                        grid: {
+                            display: false
+                        },
+                         ticks: {
+                            color: '#475569',
+                            font: { size: 12 }
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        backgroundColor: '#1E293B',
+                        titleFont: { size: 14 },
+                        bodyFont: { size: 12 },
+                        callbacks: {
+                           title: tooltipTitleCallback
+                        }
+                    }
+                }
+            }
+        });
+
+        const clusteringData = {
+            labels: [
+                'deutsche-telekom/gbert-large',
+                wrapLabel('sentence-transformers/paraphrase-multilingual-mpnet-base-v2', 25)
+            ],
+            datasets: [{
+                label: 'Deutscher Clustering-Wert',
+                data: [34.74, 32.16],
+                backgroundColor: ['rgba(0, 82, 155, 0.8)', 'rgba(0, 174, 239, 0.6)'],
+                borderColor: ['rgba(0, 82, 155, 1)', 'rgba(0, 174, 239, 1)'],
+                borderWidth: 1,
+                borderRadius: 5,
+            }]
+        };
+
+        const clusteringCtx = document.getElementById('clusteringChart').getContext('2d');
+        new Chart(clusteringCtx, {
+            type: 'bar',
+            data: clusteringData,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                 scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 40,
+                        grid: {
+                            color: '#e2e8f0'
+                        },
+                        ticks: {
+                            color: '#475569'
+                        },
+                        title: {
+                            display: true,
+                            text: 'Durchschnittlicher Clustering-Score',
+                            color: '#1E293B',
+                            font: { size: 14 }
+                        }
+                    },
+                    x: {
+                         grid: {
+                            display: false
+                        },
+                         ticks: {
+                            color: '#475569',
+                            font: { size: 12 }
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        backgroundColor: '#1E293B',
+                        titleFont: { size: 14 },
+                        bodyFont: { size: 12 },
+                        callbacks: {
+                            title: tooltipTitleCallback
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>
