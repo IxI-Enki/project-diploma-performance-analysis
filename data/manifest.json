@@ -1,0 +1,27 @@
+{
+  "schema_version": "1.0.0",
+  "generated_at": "2026-06-16T12:23:31+00:00",
+  "sources": [
+    "seed/curated"
+  ],
+  "source_urls": [
+    "https://huggingface.co/spaces/mteb/leaderboard"
+  ],
+  "files": [
+    "mteb_de_leaderboard.json"
+  ],
+  "changelog": [
+    {
+      "generated_at": "2026-06-16T12:23:31+00:00",
+      "source": "seed/curated"
+    },
+    {
+      "generated_at": "2026-06-16T12:21:20+00:00",
+      "source": "seed/curated"
+    },
+    {
+      "at": "2026-06-16T12:20:26.891348+00:00",
+      "note": "Updated from seed_snapshot"
+    }
+  ]
+}

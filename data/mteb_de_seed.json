@@ -1,0 +1,84 @@
+{
+  "models": [
+    {
+      "model_id": "intfloat/multilingual-e5-large-instruct",
+      "avg_score": 58.4,
+      "params_m": 560,
+      "license": "MIT",
+      "updated": null,
+      "tasks": { "retrieval": 57.1, "clustering": 46.2, "classification": 72.8, "sts": 84.1 }
+    },
+    {
+      "model_id": "intfloat/e5-mistral-7b-instruct",
+      "avg_score": 57.9,
+      "params_m": 7100,
+      "license": "MIT",
+      "updated": null,
+      "tasks": { "retrieval": 55.8, "clustering": 48.5, "classification": 71.2, "sts": 85.0 }
+    },
+    {
+      "model_id": "mistralai/mistral-embed",
+      "avg_score": 57.2,
+      "params_m": null,
+      "license": "Proprietary",
+      "updated": null,
+      "tasks": { "retrieval": 55.26, "clustering": 47.1, "classification": 70.5, "sts": 83.4 }
+    },
+    {
+      "model_id": "intfloat/multilingual-e5-large",
+      "avg_score": 56.8,
+      "params_m": 560,
+      "license": "MIT",
+      "updated": null,
+      "tasks": { "retrieval": 54.1, "clustering": 45.8, "classification": 71.9, "sts": 83.6 }
+    },
+    {
+      "model_id": "deutsche-telekom/gbert-large",
+      "avg_score": 52.1,
+      "params_m": 340,
+      "license": "Apache-2.0",
+      "updated": null,
+      "tasks": { "retrieval": 48.2, "clustering": 34.74, "classification": 68.4, "sts": 79.8 }
+    },
+    {
+      "model_id": "sentence-transformers/paraphrase-multilingual-mpnet-base-v2",
+      "avg_score": 48.6,
+      "params_m": 278,
+      "license": "Apache-2.0",
+      "updated": null,
+      "tasks": { "retrieval": 39.8, "clustering": 32.16, "classification": 65.2, "sts": 78.9 }
+    },
+    {
+      "model_id": "intfloat/multilingual-e5-base",
+      "avg_score": 54.2,
+      "params_m": 278,
+      "license": "MIT",
+      "updated": null,
+      "tasks": { "retrieval": 52.4, "clustering": 44.1, "classification": 69.8, "sts": 82.1 }
+    },
+    {
+      "model_id": "intfloat/multilingual-e5-small",
+      "avg_score": 50.8,
+      "params_m": 118,
+      "license": "MIT",
+      "updated": null,
+      "tasks": { "retrieval": 49.1, "clustering": 41.2, "classification": 66.4, "sts": 80.5 }
+    },
+    {
+      "model_id": "Snowflake/snowflake-arctic-embed-l-v2.0",
+      "avg_score": 59.1,
+      "params_m": 568,
+      "license": "Apache-2.0",
+      "updated": null,
+      "tasks": { "retrieval": 58.3, "clustering": 47.9, "classification": 73.5, "sts": 84.8 }
+    },
+    {
+      "model_id": "BAAI/bge-m3",
+      "avg_score": 58.7,
+      "params_m": 568,
+      "license": "MIT",
+      "updated": null,
+      "tasks": { "retrieval": 57.9, "clustering": 46.8, "classification": 73.1, "sts": 84.2 }
+    }
+  ]
+}

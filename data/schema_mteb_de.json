@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "MTEB DE Leaderboard",
+  "type": "object",
+  "required": ["schema_version", "generated_at", "source", "models"],
+  "properties": {
+    "schema_version": { "type": "string" },
+    "generated_at": { "type": "string", "format": "date-time" },
+    "source": { "type": "string" },
+    "source_url": { "type": "string" },
+    "models": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["model_id", "avg_score", "tasks"],
+        "properties": {
+          "model_id": { "type": "string" },
+          "avg_score": { "type": "number" },
+          "params_m": { "type": ["number", "null"] },
+          "license": { "type": ["string", "null"] },
+          "updated": { "type": ["string", "null"] },
+          "tasks": {
+            "type": "object",
+            "properties": {
+              "retrieval": { "type": ["number", "null"] },
+              "clustering": { "type": ["number", "null"] },
+              "classification": { "type": ["number", "null"] },
+              "sts": { "type": ["number", "null"] }
+            },
+            "additionalProperties": true
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "picker_rules": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["task", "resources", "model_id", "reason_en", "reason_de"],
+        "properties": {
+          "task": { "type": "string" },
+          "resources": { "type": "string" },
+          "model_id": { "type": "string" },
+          "reason_en": { "type": "string" },
+          "reason_de": { "type": "string" }
+        }
+      }
+    }
+  },
+  "additionalProperties": true
+}
