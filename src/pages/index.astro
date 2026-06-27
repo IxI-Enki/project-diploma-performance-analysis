@@ -5,6 +5,7 @@ import leaderboard from '../lib/data/mteb_de_leaderboard.json';
 import manifest from '../lib/data/manifest.json';
 import type { LeaderboardSnapshot, Manifest } from '../lib/types/mteb';
 import { formatScore, formatParams, logoForModel } from '../lib/types/mteb';
+import { dimSourceLabel, priceSourceLabel } from '../lib/mteb_filter';
 
 const data = leaderboard as LeaderboardSnapshot;
 const meta = manifest as Manifest;
@@ -25,8 +26,8 @@ const pickerRules = data.picker_rules ?? [];
         <div class="sec-head">
           <h2>Leaderboard</h2>
         </div>
-        <div style="overflow-x:auto">
-          <table class="data" id="leaderboard-table">
+        <div class="table-scroll leaderboard-scroll">
+          <table class="data leaderboard-table" id="leaderboard-table">
             <thead>
               <tr>
                 <th>#</th>
@@ -59,8 +60,8 @@ const pickerRules = data.picker_rules ?? [];
                       {m.embedding_dim != null ? (
                         <span>
                           {m.embedding_dim}
-                          {m.dim_source && m.dim_source !== 'unknown' && (
-                            <span class="src-tag" title="Aggregator source">{m.dim_source}</span>
+                          {dimSourceLabel(m.dim_source) && (
+                            <span class="src-tag" title="Aggregator source">{dimSourceLabel(m.dim_source)}</span>
                           )}
                         </span>
                       ) : '—'}
@@ -69,8 +70,8 @@ const pickerRules = data.picker_rules ?? [];
                       {m.price_input_per_mtok != null ? (
                         <span>
                           ${m.price_input_per_mtok.toFixed(4)}
-                          {m.price_source && m.price_source !== 'unknown' && (
-                            <span class="src-tag" title="Aggregator source">{m.price_source}</span>
+                          {priceSourceLabel(m.price_source) && (
+                            <span class="src-tag" title="Aggregator source">{priceSourceLabel(m.price_source)}</span>
                           )}
                         </span>
                       ) : '—'}
@@ -126,6 +127,7 @@ const pickerRules = data.picker_rules ?? [];
 </BaseLayout>
 
 <style>
+  .leaderboard-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
   .src-tag {
     font-size: 0.65rem;
     margin-left: 4px;
@@ -137,4 +139,14 @@ const pickerRules = data.picker_rules ?? [];
   .picker-rules li { margin-bottom: 16px; border-bottom: 1px solid rgba(255,255,255,0.06); padding-bottom: 12px; }
   .picker-rules p { margin: 4px 0 0; font-size: 0.9rem; color: var(--muted); }
   .de-reason { font-style: italic; }
+  @media (max-width: 768px) {
+    .leaderboard-table th:nth-child(5),
+    .leaderboard-table td:nth-child(5),
+    .leaderboard-table th:nth-child(6),
+    .leaderboard-table td:nth-child(6),
+    .leaderboard-table th:nth-child(7),
+    .leaderboard-table td:nth-child(7) { display: none; }
+    .leaderboard-table .model-cell .mono { font-size: 0.72rem; }
+    .leaderboard-table td strong { font-size: 0.9rem; }
+  }
 </style>
