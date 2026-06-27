@@ -2,7 +2,7 @@ name: Update MTEB DE data
 
 on:
   schedule:
-    - cron: '0 6 * * 1'
+    - cron: '0 2 * * *'
   workflow_dispatch:
 
 permissions:
@@ -27,11 +27,14 @@ jobs:
       - name: Validate JSON
         run: python scripts/validate_json.py
 
+      - name: Copy data to Astro lib
+        run: node scripts/copy_data.mjs
+
       - name: Commit if changed
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/
+          git add data/ src/lib/data/
           if git diff --staged --quiet; then
             echo "[INFO] No data changes"
           else

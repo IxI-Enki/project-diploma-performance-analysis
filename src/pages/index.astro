@@ -1,0 +1,140 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import MtebDashboard from '../components/mteb_dashboard.svelte';
+import leaderboard from '../lib/data/mteb_de_leaderboard.json';
+import manifest from '../lib/data/manifest.json';
+import type { LeaderboardSnapshot, Manifest } from '../lib/types/mteb';
+import { formatScore, formatParams, logoForModel } from '../lib/types/mteb';
+
+const data = leaderboard as LeaderboardSnapshot;
+const meta = manifest as Manifest;
+const base = import.meta.env.BASE_URL;
+const models = data.models.sort((a, b) => b.avg_score - a.avg_score);
+const generatedAt = new Date(meta.generated_at).toLocaleString('en-GB', { timeZone: 'UTC' }) + ' UTC';
+const pickerRules = data.picker_rules ?? [];
+---
+
+<BaseLayout
+  fallback={data.fallback === true}
+  generatedAt={generatedAt}
+  source={data.source}
+>
+  <section>
+    <div class="wrap">
+      <div class="card section-band">
+        <div class="sec-head">
+          <h2>Leaderboard</h2>
+        </div>
+        <div style="overflow-x:auto">
+          <table class="data" id="leaderboard-table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Model</th>
+                <th>Avg</th>
+                <th>Retrieval</th>
+                <th>Clustering</th>
+                <th>Classification</th>
+                <th>Params</th>
+                <th>Dim</th>
+                <th>Price/M</th>
+              </tr>
+            </thead>
+            <tbody>
+              {models.map((m, i) => {
+                const logo = logoForModel(m.model_id);
+                return (
+                  <tr>
+                    <td>{i + 1}</td>
+                    <td class="model-cell">
+                      {logo && <img class="model-logo" src={`${base}img/logos/${logo}`} alt="" width="28" height="28" loading="lazy" />}
+                      <span class="mono">{m.model_id}</span>
+                    </td>
+                    <td><strong>{formatScore(m.avg_score, 2)}</strong></td>
+                    <td>{formatScore(m.tasks.retrieval)}</td>
+                    <td>{formatScore(m.tasks.clustering)}</td>
+                    <td>{formatScore(m.tasks.classification)}</td>
+                    <td>{formatParams(m.params_m)}</td>
+                    <td>
+                      {m.embedding_dim != null ? (
+                        <span>
+                          {m.embedding_dim}
+                          {m.dim_source && m.dim_source !== 'unknown' && (
+                            <span class="src-tag" title="Aggregator source">{m.dim_source}</span>
+                          )}
+                        </span>
+                      ) : '—'}
+                    </td>
+                    <td>
+                      {m.price_input_per_mtok != null ? (
+                        <span>
+                          ${m.price_input_per_mtok.toFixed(4)}
+                          {m.price_source && m.price_source !== 'unknown' && (
+                            <span class="src-tag" title="Aggregator source">{m.price_source}</span>
+                          )}
+                        </span>
+                      ) : '—'}
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-tight">
+    <div class="wrap">
+      <MtebDashboard client:visible models={models} baseUrl={base} />
+    </div>
+  </section>
+
+  {pickerRules.length > 0 && (
+    <section class="section-tight">
+      <div class="wrap">
+        <div class="card">
+          <h2>Model picker rules</h2>
+          <ul class="picker-rules">
+            {pickerRules.map((rule) => (
+              <li>
+                <strong>{rule.task}</strong> ({rule.resources}) → <span class="mono">{rule.model_id}</span>
+                <p>{rule.reason_en}</p>
+                <p class="de-reason">{rule.reason_de}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <section class="section-tight">
+    <div class="wrap">
+      <div class="card">
+        <h2>Methodology</h2>
+        <p style="margin-top:10px;color:var(--muted);font-size:.92rem">
+          MTEB aggregates task-specific scores. Retrieval uses nDCG-style ranking metrics;
+          clustering measures group quality on German datasets. Scores are normalized for comparison
+          on the public leaderboard. Dimension and pricing data may come from HF Hub or secondary
+          aggregators (LiteLLM, OpenRouter) and are labeled accordingly.
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .src-tag {
+    font-size: 0.65rem;
+    margin-left: 4px;
+    padding: 1px 4px;
+    border-radius: 3px;
+    background: rgba(234, 179, 8, 0.25);
+  }
+  .picker-rules { list-style: none; padding: 0; }
+  .picker-rules li { margin-bottom: 16px; border-bottom: 1px solid rgba(255,255,255,0.06); padding-bottom: 12px; }
+  .picker-rules p { margin: 4px 0 0; font-size: 0.9rem; color: var(--muted); }
+  .de-reason { font-style: italic; }
+</style>

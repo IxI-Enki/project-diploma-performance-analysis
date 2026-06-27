@@ -1,53 +1,64 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "MTEB DE Leaderboard",
+  "$id": "https://ixi-enki.github.io/schemas/mteb-de-leaderboard/2.0.0",
+  "title": "MTEB DE Leaderboard Dataset",
   "type": "object",
   "required": ["schema_version", "generated_at", "source", "models"],
   "properties": {
-    "schema_version": { "type": "string" },
+    "schema_version": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$" },
     "generated_at": { "type": "string", "format": "date-time" },
     "source": { "type": "string" },
     "source_url": { "type": "string" },
+    "benchmark": { "type": "string" },
+    "fallback": { "type": "boolean" },
     "models": {
       "type": "array",
       "minItems": 1,
-      "items": {
-        "type": "object",
-        "required": ["model_id", "avg_score", "tasks"],
-        "properties": {
-          "model_id": { "type": "string" },
-          "avg_score": { "type": "number" },
-          "params_m": { "type": ["number", "null"] },
-          "license": { "type": ["string", "null"] },
-          "updated": { "type": ["string", "null"] },
-          "tasks": {
-            "type": "object",
-            "properties": {
-              "retrieval": { "type": ["number", "null"] },
-              "clustering": { "type": ["number", "null"] },
-              "classification": { "type": ["number", "null"] },
-              "sts": { "type": ["number", "null"] }
-            },
-            "additionalProperties": true
-          }
-        },
-        "additionalProperties": true
-      }
+      "items": { "$ref": "#/$defs/ModelRanking" }
     },
     "picker_rules": {
       "type": "array",
-      "items": {
-        "type": "object",
-        "required": ["task", "resources", "model_id", "reason_en", "reason_de"],
-        "properties": {
-          "task": { "type": "string" },
-          "resources": { "type": "string" },
-          "model_id": { "type": "string" },
-          "reason_en": { "type": "string" },
-          "reason_de": { "type": "string" }
-        }
-      }
+      "items": { "$ref": "#/$defs/PickerRule" }
     }
   },
-  "additionalProperties": true
+  "$defs": {
+    "ModelRanking": {
+      "type": "object",
+      "required": ["model_id", "avg_score", "tasks"],
+      "properties": {
+        "model_id": { "type": "string" },
+        "avg_score": { "type": "number" },
+        "params_m": { "type": ["number", "null"] },
+        "license": { "type": ["string", "null"] },
+        "updated": { "type": ["string", "null"] },
+        "tasks": {
+          "type": "object",
+          "properties": {
+            "retrieval": { "type": ["number", "null"] },
+            "clustering": { "type": ["number", "null"] },
+            "classification": { "type": ["number", "null"] },
+            "sts": { "type": ["number", "null"] }
+          },
+          "additionalProperties": { "type": ["number", "null"] }
+        },
+        "embedding_dim": { "type": ["integer", "null"] },
+        "dim_source": { "enum": ["hf_hub", "fallback_map", "unknown"] },
+        "price_input_per_mtok": { "type": ["number", "null"] },
+        "price_source": { "enum": ["litellm", "openrouter", "unknown"] },
+        "is_open": { "type": "boolean" }
+      },
+      "additionalProperties": true
+    },
+    "PickerRule": {
+      "type": "object",
+      "required": ["task", "resources", "model_id", "reason_en", "reason_de"],
+      "properties": {
+        "task": { "type": "string" },
+        "resources": { "enum": ["high", "low"] },
+        "model_id": { "type": "string" },
+        "reason_en": { "type": "string" },
+        "reason_de": { "type": "string" }
+      }
+    }
+  }
 }
