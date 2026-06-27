@@ -1,7 +1,15 @@
 <script lang="ts">
   import { onMount } from 'svelte';
   import type { ModelRanking, TaskKey, FilterState } from '../lib/types/mteb';
-  import { formatScore, formatParams, logoForModel } from '../lib/types/mteb';
+  import { formatScore, logoForModel } from '../lib/types/mteb';
+  import {
+    alignTasksForCompare,
+    dimSourceLabel,
+    filterModels,
+    modelsByIds,
+    priceSourceLabel,
+    tasksUnavailableForCompare,
+  } from '../lib/mteb_filter';
 
   interface Props {
     models: ModelRanking[];
@@ -26,27 +34,7 @@
   const base = baseUrl.endsWith('/') ? baseUrl : `${baseUrl}/`;
 
   function filteredModels(): ModelRanking[] {
-    let list = [...models];
-    if (filter.open_only) list = list.filter((m) => m.is_open !== false);
-    if (filter.dim_max != null) {
-      list = list.filter((m) => m.embedding_dim == null || m.embedding_dim <= filter.dim_max!);
-    }
-    if (filter.price_band === 'free') {
-      list = list.filter((m) => m.price_input_per_mtok == null || m.price_input_per_mtok === 0);
-    } else if (filter.price_band === 'paid') {
-      list = list.filter((m) => m.price_input_per_mtok != null && m.price_input_per_mtok > 0);
-    }
-    if (filter.search.trim()) {
-      const q = filter.search.toLowerCase();
-      list = list.filter((m) => m.model_id.toLowerCase().includes(q));
-    }
-    const task = filter.task;
-    if (filter.sort === 'task') {
-      list.sort((a, b) => (b.tasks[task] ?? -1) - (a.tasks[task] ?? -1));
-    } else {
-      list.sort((a, b) => b.avg_score - a.avg_score);
-    }
-    return list;
+    return filterModels(models, filter);
   }
 
   function resetFilters() {
@@ -70,30 +58,15 @@
   }
 
   function compareModels(): ModelRanking[] {
-    return compareIds.map((id) => models.find((m) => m.model_id === id)).filter(Boolean) as ModelRanking[];
+    return modelsByIds(models, compareIds);
   }
 
-  function alignedTasks(): string[] {
-    const selected = compareModels();
-    if (selected.length < 2) return [];
-    const keys = ['retrieval', 'clustering', 'classification', 'sts'] as const;
-    return keys.filter((k) => selected.every((m) => m.tasks[k] != null));
+  function alignedTasks(): TaskKey[] {
+    return alignTasksForCompare(compareModels());
   }
 
-  function taskUnavailable(model: ModelRanking, task: string): boolean {
-    return model.tasks[task as TaskKey] == null;
-  }
-
-  function dimBadge(m: ModelRanking): string {
-    if (m.embedding_dim == null) return '';
-    const src = m.dim_source && m.dim_source !== 'unknown' ? ` (${m.dim_source})` : '';
-    return `${m.embedding_dim}${src}`;
-  }
-
-  function priceBadge(m: ModelRanking): string {
-    if (m.price_input_per_mtok == null) return '';
-    const src = m.price_source && m.price_source !== 'unknown' ? ` [${m.price_source}]` : '';
-    return `$${m.price_input_per_mtok.toFixed(4)}/M${src}`;
+  function unavailableTasks(): TaskKey[] {
+    return tasksUnavailableForCompare(compareModels());
   }
 
   async function loadChart(): Promise<typeof import('chart.js').Chart | null> {
@@ -239,16 +212,16 @@
               <td>
                 {#if m.embedding_dim != null}
                   <span class="badge">{m.embedding_dim}</span>
-                  {#if m.dim_source && m.dim_source !== 'unknown'}
-                    <span class="badge badge-src">{m.dim_source}</span>
+                  {#if dimSourceLabel(m.dim_source)}
+                    <span class="badge badge-src" title="Aggregator source">{dimSourceLabel(m.dim_source)}</span>
                   {/if}
                 {:else}—{/if}
               </td>
               <td>
                 {#if m.price_input_per_mtok != null}
                   <span class="badge">${m.price_input_per_mtok.toFixed(4)}</span>
-                  {#if m.price_source && m.price_source !== 'unknown'}
-                    <span class="badge badge-src">{m.price_source}</span>
+                  {#if priceSourceLabel(m.price_source)}
+                    <span class="badge badge-src" title="Aggregator source">{priceSourceLabel(m.price_source)}</span>
                   {/if}
                 {:else}—{/if}
               </td>
@@ -293,14 +266,14 @@
       <div class="chart-wrap" style="height:280px">
         <canvas bind:this={chartCanvas}></canvas>
       </div>
-      <p class="muted-small">
-        Tasks without scores for all selected models:
-        {#each ['retrieval', 'clustering', 'classification', 'sts'] as t}
-          {#if compareModels().some((m) => taskUnavailable(m, t))}
+      {#if unavailableTasks().length > 0}
+        <p class="muted-small">
+          Tasks without scores for all selected models:
+          {#each unavailableTasks() as t}
             <span class="badge badge-warn">{t}: unavailable</span>
-          {/if}
-        {/each}
-      </p>
+          {/each}
+        </p>
+      {/if}
     </div>
   {/if}
 </div>
@@ -327,10 +300,14 @@
   .compare-panel { margin-top: 20px; }
   .muted-small { font-size: 0.75rem; color: var(--muted); margin-top: 8px; }
   .table-scroll { overflow-x: auto; }
-  @media (max-width: 640px) {
+  @media (max-width: 768px) {
     .compare-table th:nth-child(5),
     .compare-table td:nth-child(5),
     .compare-table th:nth-child(6),
-    .compare-table td:nth-child(6) { display: none; }
+    .compare-table td:nth-child(6),
+    .compare-table th:nth-child(8),
+    .compare-table td:nth-child(8) { display: none; }
+    .model-cell .mono { font-size: 0.72rem; }
+    .filter-row label { min-width: 45%; }
   }
 </style>
