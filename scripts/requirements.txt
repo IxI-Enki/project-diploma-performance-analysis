@@ -2,3 +2,5 @@ requests>=2.31.0
 jsonschema>=4.22.0
 pytest>=8.0.0
 mteb>=1.36.0,<1.39.0; python_version < "3.13"
+pyarrow>=16.0.0
+huggingface_hub>=0.24.0

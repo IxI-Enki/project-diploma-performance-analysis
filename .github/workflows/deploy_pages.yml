@@ -30,7 +30,17 @@ jobs:
       - name: Fetch and validate data
         run: |
           pip install -r scripts/requirements.txt
-          python scripts/fetch_mteb_de.py || true
+          set +e
+          python scripts/fetch_mteb_de.py
+          FETCH_RC=$?
+          set -e
+          if [ "$FETCH_RC" -ne 0 ]; then
+            echo "::warning::MTEB live fetch failed (exit $FETCH_RC); deploying committed snapshot"
+          fi
+          if [ ! -f data/mteb_de_leaderboard.json ]; then
+            echo "::error::Missing data/mteb_de_leaderboard.json after fetch"
+            exit 1
+          fi
           python scripts/validate_json.py
 
       - name: Copy JSON to Astro lib

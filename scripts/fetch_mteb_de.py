@@ -32,6 +32,17 @@ LITELLM_PRICES_URL = (
 )
 OPENROUTER_MODELS_URL = "https://openrouter.ai/api/v1/models"
 SOURCE_URL = "https://huggingface.co/spaces/mteb/leaderboard"
+MTEB_RESULTS_REPO = "mteb/results"
+MTEB_RESULTS_SHARDS = 4
+MTEB_DE_BENCHMARK = "MTEB(deu, v1)"
+MTEB_TASK_TYPE_MAP = {
+    "Retrieval": "retrieval",
+    "Reranking": "retrieval",
+    "Clustering": "clustering",
+    "Classification": "classification",
+    "PairClassification": "classification",
+    "STS": "sts",
+}
 SCHEMA_VERSION = "2.0.0"
 
 EXCLUDED_MODEL_PREFIXES = ("Octen/",)
@@ -200,6 +211,109 @@ def _is_open_license(license_val: str | None) -> bool:
     return "proprietary" not in low and "unknown" not in low
 
 
+
+
+def _mteb_de_task_types() -> dict[str, str]:
+    import mteb
+
+    bench = mteb.get_benchmark(MTEB_DE_BENCHMARK)
+    return {task.metadata.name: task.metadata.type for task in bench.tasks}
+
+
+def _normalize_score(score: float) -> float:
+    return round(float(score) * 100, 2) if score <= 1 else round(float(score), 2)
+
+
+def _aggregate_de_models_from_rows(
+    rows: list[tuple[str, str, str | None, float | None]],
+    type_by_task: dict[str, str],
+) -> list[dict]:
+    from collections import defaultdict
+
+    buckets: dict[str, dict[str, list[float]]] = defaultdict(lambda: defaultdict(list))
+    for model_id, task_name, _split, score in rows:
+        if score is None:
+            continue
+        task_type = type_by_task.get(task_name)
+        if not task_type:
+            continue
+        bucket_key = MTEB_TASK_TYPE_MAP.get(task_type)
+        if not bucket_key:
+            continue
+        buckets[model_id][bucket_key].append(_normalize_score(score))
+
+    models: list[dict] = []
+    for model_id, task_buckets in buckets.items():
+        if is_excluded(model_id):
+            continue
+        tasks = {
+            "retrieval": None,
+            "clustering": None,
+            "classification": None,
+            "sts": None,
+        }
+        score_vals: list[float] = []
+        for key, vals in task_buckets.items():
+            if not vals:
+                continue
+            avg = round(sum(vals) / len(vals), 2)
+            tasks[key] = avg
+            score_vals.append(avg)
+        if len(score_vals) < 2:
+            continue
+        models.append(
+            {
+                "model_id": model_id,
+                "avg_score": round(sum(score_vals) / len(score_vals), 2),
+                "params_m": None,
+                "license": None,
+                "updated": None,
+                "is_open": True,
+                "tasks": tasks,
+            }
+        )
+    models.sort(key=lambda m: m["avg_score"], reverse=True)
+    return models[:20]
+
+
+def fetch_live_mteb_results_dataset() -> list[dict]:
+    import warnings
+
+    import pyarrow.parquet as pq
+    from huggingface_hub import hf_hub_download
+
+    warnings.filterwarnings("ignore", category=UserWarning, module="mteb")
+    type_by_task = _mteb_de_task_types()
+    de_tasks = set(type_by_task)
+    rows: list[tuple[str, str, str | None, float | None]] = []
+
+    for shard in range(MTEB_RESULTS_SHARDS):
+        parquet_path = hf_hub_download(
+            MTEB_RESULTS_REPO,
+            f"data/train-{shard:05d}-of-{MTEB_RESULTS_SHARDS:05d}.parquet",
+            repo_type="dataset",
+        )
+        parquet_file = pq.ParquetFile(parquet_path)
+        for batch in parquet_file.iter_batches(
+            batch_size=200_000,
+            columns=["model_name", "task_name", "split", "score"],
+        ):
+            model_names = batch.column(0).to_pylist()
+            task_names = batch.column(1).to_pylist()
+            splits = batch.column(2).to_pylist()
+            scores = batch.column(3).to_pylist()
+            for model_id, task_name, split, score in zip(model_names, task_names, splits, scores):
+                if task_name not in de_tasks:
+                    continue
+                if split not in (None, "test", "validation"):
+                    continue
+                rows.append((model_id, task_name, split, score))
+
+    models = _aggregate_de_models_from_rows(rows, type_by_task)
+    if len(models) < 5:
+        raise RuntimeError(f"Too few models from mteb/results dataset ({len(models)})")
+    return models
+
 def fetch_live_mteb_backend() -> list[dict]:
     resp = requests.get(MTEB_BACKEND_URL, timeout=90)
     resp.raise_for_status()
@@ -217,7 +331,7 @@ def fetch_live_mteb_package() -> list[dict] | None:
 
     task_map = {"Retrieval": "retrieval", "Clustering": "clustering", "Classification": "classification"}
     try:
-        tasks = mteb.get_tasks(languages=["deu"], script=["Latin"])
+        tasks = mteb.get_tasks(languages=["deu"], script=["Latn"])
         results = mteb.load_results()
         rows: dict[str, dict] = {}
         for model_result in results:
@@ -279,6 +393,10 @@ def fetch_live() -> tuple[list[dict], str]:
         return fetch_live_mteb_backend(), "mteb/backend-api"
     except Exception as exc:
         print(f"[WARN] MTEB backend failed: {exc}", file=sys.stderr)
+    try:
+        return fetch_live_mteb_results_dataset(), "mteb/results-dataset"
+    except Exception as exc:
+        print(f"[WARN] MTEB results dataset failed: {exc}", file=sys.stderr)
     models = fetch_live_mteb_package()
     if models:
         return models, "mteb/python-package"
