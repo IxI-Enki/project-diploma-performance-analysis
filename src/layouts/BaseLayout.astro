@@ -1,0 +1,138 @@
+---
+import '../styles/showcase.css';
+
+interface Props {
+  title?: string;
+  fallback?: boolean;
+  generatedAt?: string;
+  source?: string;
+}
+
+const {
+  title = 'MTEB DE Embedding Dashboard',
+  fallback = false,
+  generatedAt,
+  source,
+} = Astro.props;
+const base = import.meta.env.BASE_URL;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{title} · IxI-Enki</title>
+  <meta name="description" content="Live reference dashboard for German text embedding models on MTEB RTEB (deu).">
+</head>
+<body class="neu">
+  {fallback && (
+    <div class="offline-banner" role="status">
+      Showing seed or bootstrap snapshot — live fetch unavailable. Scores may be stale.
+    </div>
+  )}
+
+  <div class="bg-layer" aria-hidden="true">
+    <div class="bg-parallax bg-parallax--grid"><div class="bg-grid"></div></div>
+    <div class="bg-parallax bg-parallax--grad">
+      <div class="bg-gradient-blobs">
+        <span class="bg-grad-blob bg-grad-blob--1"></span>
+        <span class="bg-grad-blob bg-grad-blob--2"></span>
+        <span class="bg-grad-blob bg-grad-blob--3"></span>
+        <span class="bg-grad-blob bg-grad-blob--4"></span>
+      </div>
+    </div>
+    <div class="bg-parallax bg-parallax--blob1"><div class="blob blob-1"></div></div>
+    <div class="bg-parallax bg-parallax--blob2"><div class="blob blob-2"></div></div>
+    <div class="bg-parallax bg-parallax--blob3"><div class="blob blob-3"></div></div>
+  </div>
+
+  <header class="site">
+    <div class="wrap">
+      <a class="brand" href="https://ixi-enki.github.io/">IxI<span class="x">-</span>Enki</a>
+      <nav class="main">
+        <a href={base} class="active">Embeddings</a>
+        <a href="https://ixi-enki.github.io/artificial-intelligence-provider-analysis/">AI providers</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="wrap">
+      <p class="kicker">Reference dashboard · MTEB RTEB (deu)</p>
+      <h1>German embedding models for RAG</h1>
+      <p class="lead">
+        Independent preparation tool: compare public MTEB scores for retrieval, clustering and classification —
+        updated daily via GitHub Actions. Not thesis-specific benchmark data.
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-primary btn-shine" href="https://huggingface.co/spaces/mteb/leaderboard" target="_blank" rel="noopener">
+          <img src={`${base}img/logos/huggingface.svg`} alt="" width="18" height="18" style="object-fit:contain">
+          <span>MTEB Leaderboard</span>
+        </a>
+        <a class="btn" href="https://ixi-enki.github.io/artificial-intelligence-provider-analysis/">
+          AI Provider Landscape
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap"><div class="sec-divider"><span class="sec-divider__line"></span></div></div>
+
+  {generatedAt && (
+    <div class="wrap">
+      <p class="mono data-meta" style="font-size:.75rem;color:var(--muted);margin-bottom:8px">
+        Last updated: {generatedAt}{source ? ` · Source: ${source}` : ''}
+      </p>
+    </div>
+  )}
+
+  <div class="wrap pagefind-wrap">
+    <div id="pagefind-search" class="pagefind-search"></div>
+  </div>
+
+  <slot />
+
+  <footer class="site">
+    <div class="wrap footer-inner">
+      <div class="footer-col">
+        <p class="footer-h">About</p>
+        <p>Reference dashboard by Jan Ritt (IxI-Enki). Supports embedding model research for RAG.</p>
+      </div>
+      <div class="footer-col">
+        <p class="footer-h">Links</p>
+        <a href="https://ixi-enki.github.io/">Portfolio</a>
+        <a href="https://ixi-enki.github.io/artificial-intelligence-provider-analysis/">AI provider landscape</a>
+      </div>
+      <div class="footer-col">
+        <p class="footer-h">Data</p>
+        <a href="https://github.com/IxI-Enki/project-diploma-performance-analysis">GitHub repo</a>
+      </div>
+    </div>
+    <div class="wrap footer-base">
+      <span>Jan Ritt · HTL Leonding</span>
+      <span>Updated daily (02:00 UTC)</span>
+    </div>
+  </footer>
+
+  <link href={`${base}pagefind/pagefind-ui.css`} rel="stylesheet" />
+  <script is:inline define:vars={{ base }}>
+    (function () {
+      const bundle = base + 'pagefind/';
+      const s = document.createElement('script');
+      s.src = bundle + 'pagefind-ui.js';
+      s.onload = function () {
+        if (typeof PagefindUI !== 'undefined') {
+          new PagefindUI({ element: '#pagefind-search', bundlePath: bundle, showSubResults: true });
+        }
+      };
+      document.body.appendChild(s);
+    })();
+  </script>
+</body>
+</html>
+
+<style>
+  .pagefind-wrap { margin-bottom: 12px; }
+  .pagefind-search { max-width: 420px; }
+</style>

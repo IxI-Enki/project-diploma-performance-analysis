@@ -9,31 +9,60 @@ from pathlib import Path
 import jsonschema
 
 ROOT = Path(__file__).resolve().parents[1]
-SCHEMAS = ROOT / "data" / "schemas"
+SCHEMA_PATH = ROOT / "data" / "schema_mteb_de.json"
+LEADERBOARD_PATH = ROOT / "data" / "mteb_de_leaderboard.json"
+MANIFEST_PATH = ROOT / "data" / "manifest.json"
+
+EXCLUDED_PREFIXES = ("Octen/",)
+MIN_AVG_SCORE_COVERAGE = 0.95
 
 
 def main() -> int:
-    checks = [
-        (ROOT / "data" / "mteb_de_leaderboard.json", ROOT / "data" / "schema_mteb_de.json"),
-        (ROOT / "data" / "manifest.json", None),
-    ]
     ok = True
-    for path, schema_path in checks:
-        if not path.exists():
-            print(f"[ERROR] Missing {path}", file=sys.stderr)
+
+    if not LEADERBOARD_PATH.exists():
+        print(f"[ERROR] Missing {LEADERBOARD_PATH}", file=sys.stderr)
+        return 1
+
+    if not SCHEMA_PATH.exists():
+        print(f"[ERROR] Missing schema {SCHEMA_PATH}", file=sys.stderr)
+        return 1
+
+    data = json.loads(LEADERBOARD_PATH.read_text(encoding="utf-8"))
+    schema = json.loads(SCHEMA_PATH.read_text(encoding="utf-8"))
+    jsonschema.validate(data, schema)
+    print(f"[OK] {LEADERBOARD_PATH.name} valid against schema_mteb_de.json")
+
+    models = data.get("models", [])
+    for model in models:
+        mid = model.get("model_id", "")
+        if mid.startswith(EXCLUDED_PREFIXES):
+            print(f"[ERROR] Excluded model in output: {mid}", file=sys.stderr)
             ok = False
-            continue
-        data = json.loads(path.read_text(encoding="utf-8"))
-        if schema_path:
-            schema = json.loads(schema_path.read_text(encoding="utf-8"))
-            jsonschema.validate(data, schema)
-            print(f"[OK] {path.name} valid")
+
+    if models:
+        with_score = sum(1 for m in models if isinstance(m.get("avg_score"), (int, float)))
+        ratio = with_score / len(models)
+        if ratio < MIN_AVG_SCORE_COVERAGE:
+            print(
+                f"[ERROR] Only {ratio:.1%} models have avg_score (need >= {MIN_AVG_SCORE_COVERAGE:.0%})",
+                file=sys.stderr,
+            )
+            ok = False
         else:
-            if "generated_at" not in data:
-                print(f"[ERROR] {path.name} missing generated_at", file=sys.stderr)
-                ok = False
-            else:
-                print(f"[OK] {path.name} present")
+            print(f"[OK] avg_score coverage {ratio:.1%}")
+
+    if not MANIFEST_PATH.exists():
+        print(f"[ERROR] Missing {MANIFEST_PATH}", file=sys.stderr)
+        ok = False
+    else:
+        manifest = json.loads(MANIFEST_PATH.read_text(encoding="utf-8"))
+        if "generated_at" not in manifest:
+            print(f"[ERROR] manifest.json missing generated_at", file=sys.stderr)
+            ok = False
+        else:
+            print(f"[OK] manifest.json present")
+
     return 0 if ok else 1
 
 
