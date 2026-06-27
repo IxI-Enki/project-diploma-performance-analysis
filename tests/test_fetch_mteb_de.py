@@ -40,9 +40,44 @@ def test_failsafe_preserves_previous_json_and_manifest(tmp_data):
     with patch.object(fetch, "fetch_live", side_effect=RuntimeError("API down")):
         rc = fetch.main([])
 
-    assert rc == 1
+    assert rc == 0
     assert json.loads(fetch.OUT_FILE.read_text())["generated_at"] == "2026-01-01T00:00:00+00:00"
     assert json.loads(fetch.MANIFEST_FILE.read_text())["generated_at"] == "2026-01-01T00:00:00+00:00"
+
+
+def test_mteb_deu_api_maps_task_scores():
+    """Primary MTEB(deu, v1) API response maps retrieval/clustering/classification."""
+    row = {
+        "rank": 1,
+        "model": {"name": "intfloat/multilingual-e5-large", "openWeights": True},
+        "meanTaskType": 0.568,
+        "embeddingDim": 1024,
+        "scoresByTaskType": {
+            "Retrieval": 0.541,
+            "Clustering": 0.458,
+            "Classification": 0.719,
+            "STS": 0.812,
+        },
+    }
+    payload = {
+        "benchmarkName": "MTEB(deu, v1)",
+        "rows": [
+            row,
+            {**row, "model": {"name": "org/model-b", "openWeights": True}, "rank": 2},
+            {**row, "model": {"name": "org/model-c", "openWeights": True}, "rank": 3},
+            {**row, "model": {"name": "org/model-d", "openWeights": True}, "rank": 4},
+            {**row, "model": {"name": "org/model-e", "openWeights": True}, "rank": 5},
+        ],
+    }
+    models = fetch.parse_mteb_de_benchmark_scores(payload)
+    assert len(models) == 5
+    m = models[0]
+    assert m["model_id"] == "intfloat/multilingual-e5-large"
+    assert m["tasks"]["retrieval"] == 54.1
+    assert m["tasks"]["clustering"] == 45.8
+    assert m["tasks"]["classification"] == 71.9
+    assert m["embedding_dim"] == 1024
+    assert m["dim_source"] == "mteb_api"
 
 
 def test_mteb_backend_maps_task_scores():

@@ -50,6 +50,7 @@ export function tasksUnavailableForCompare(
 
 export function dimSourceLabel(source: string | undefined): string | null {
   if (!source || source === 'unknown') return null;
+  if (source === 'mteb_api') return 'MTEB API';
   if (source === 'hf_hub') return 'HF Hub';
   if (source === 'fallback_map') return 'inferred';
   return source;

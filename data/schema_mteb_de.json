@@ -42,7 +42,7 @@
           "additionalProperties": { "type": ["number", "null"] }
         },
         "embedding_dim": { "type": ["integer", "null"] },
-        "dim_source": { "enum": ["hf_hub", "fallback_map", "unknown"] },
+        "dim_source": { "enum": ["mteb_api", "hf_hub", "fallback_map", "unknown"] },
         "price_input_per_mtok": { "type": ["number", "null"] },
         "price_source": { "enum": ["litellm", "openrouter", "unknown"] },
         "is_open": { "type": "boolean" }

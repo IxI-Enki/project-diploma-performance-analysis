@@ -8,7 +8,7 @@ export interface MTEBTaskScore {
   [key: string]: number | null | undefined;
 }
 
-export type DimSource = 'hf_hub' | 'fallback_map' | 'unknown';
+export type DimSource = 'mteb_api' | 'hf_hub' | 'fallback_map' | 'unknown';
 export type PriceSource = 'litellm' | 'openrouter' | 'unknown';
 
 export interface ModelRanking {

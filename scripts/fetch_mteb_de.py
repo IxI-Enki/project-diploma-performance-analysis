@@ -20,18 +20,17 @@ MANIFEST_FILE = DATA_DIR / "manifest.json"
 SCHEMA_FILE = DATA_DIR / "schema_mteb_de.json"
 SEED_FILE = DATA_DIR / "mteb_de_seed.json"
 
-MTEB_BACKEND_URL = "https://mteb-leaderboard-backend.hf.space/models"
-HF_RESULTS_URL = (
-    "https://huggingface.co/spaces/mteb/leaderboard/resolve/main/"
-    "leaderboard_data/leaderboard_data.json"
-)
+MTEB_API_BASE = "https://mteb-leaderboard-backend.hf.space"
+MTEB_DE_BENCHMARK_PATH = "MTEB(deu,%20v1)"
+MTEB_DE_SCORES_URL = f"{MTEB_API_BASE}/v1/benchmarks/{MTEB_DE_BENCHMARK_PATH}/scores"
+MTEB_DE_BENCHMARK_URL = f"{MTEB_API_BASE}/v1/benchmarks/{MTEB_DE_BENCHMARK_PATH}"
 HF_HUB_CONFIG_URL = "https://huggingface.co/{model_id}/raw/main/config.json"
 LITELLM_PRICES_URL = (
     "https://raw.githubusercontent.com/BerriAI/litellm/main/"
     "model_prices_and_context_window.json"
 )
 OPENROUTER_MODELS_URL = "https://openrouter.ai/api/v1/models"
-SOURCE_URL = "https://huggingface.co/spaces/mteb/leaderboard"
+SOURCE_URL = "https://mteb-leaderboard.hf.space/benchmark/MTEB(deu,%20v1)"
 MTEB_RESULTS_REPO = "mteb/results"
 MTEB_RESULTS_SHARDS = 4
 MTEB_DE_BENCHMARK = "MTEB(deu, v1)"
@@ -137,6 +136,68 @@ def _task_score(entry: dict, keywords: tuple[str, ...]) -> float | None:
         if any(k in task_name for k in keywords):
             scores.append(float(value))
     return round(sum(scores) / len(scores), 2) if scores else None
+
+
+def _avg_task_types(by_type: dict[str, float], *keys: str) -> float | None:
+    vals = [
+        _normalize_score(by_type[key])
+        for key in keys
+        if key in by_type and by_type[key] is not None
+    ]
+    return round(sum(vals) / len(vals), 2) if vals else None
+
+
+def parse_mteb_de_benchmark_scores(payload: dict) -> list[dict]:
+    """Parse MTEB(deu, v1) rows from /v1/benchmarks/.../scores."""
+    models: list[dict] = []
+    for row in payload.get("rows", []):
+        if not isinstance(row, dict):
+            continue
+        meta = row.get("model") or {}
+        model_id = meta.get("name")
+        if not model_id or is_excluded(model_id):
+            continue
+
+        by_type = row.get("scoresByTaskType") or {}
+        retrieval = _avg_task_types(by_type, "Retrieval", "Reranking")
+        clustering = _avg_task_types(by_type, "Clustering")
+        classification = _avg_task_types(by_type, "Classification", "PairClassification")
+        sts = _avg_task_types(by_type, "STS")
+
+        mean_task_type = row.get("meanTaskType")
+        avg_score = _normalize_score(mean_task_type) if mean_task_type is not None else None
+        task_vals = [v for v in (retrieval, clustering, classification, sts) if v is not None]
+        if avg_score is None and task_vals:
+            avg_score = round(sum(task_vals) / len(task_vals), 2)
+        if avg_score is None:
+            continue
+
+        license_val = meta.get("license")
+        params_b = row.get("activeParamsB") or row.get("totalParamsB")
+        embedding_dim = row.get("embeddingDim") or meta.get("embeddingDim")
+
+        entry: dict[str, Any] = {
+            "model_id": model_id,
+            "avg_score": avg_score,
+            "params_m": round(float(params_b), 3) if params_b is not None else None,
+            "license": license_val,
+            "updated": meta.get("releaseDate"),
+            "is_open": bool(meta.get("openWeights", True)),
+            "tasks": {
+                "retrieval": retrieval,
+                "clustering": clustering,
+                "classification": classification,
+                "sts": sts,
+            },
+        }
+        if isinstance(embedding_dim, (int, float)) and embedding_dim > 0:
+            entry["embedding_dim"] = int(embedding_dim)
+            entry["dim_source"] = "mteb_api"
+        models.append(entry)
+
+    if len(models) < 5:
+        raise RuntimeError(f"Too few models from MTEB(deu, v1) API ({len(models)})")
+    return models[:20]
 
 
 def parse_mteb_backend(payload: list | dict) -> list[dict]:
@@ -327,13 +388,10 @@ def fetch_live_mteb_results_dataset() -> list[dict]:
         raise RuntimeError(f"Too few models from mteb/results dataset ({len(models)})")
     return models
 
-def fetch_live_mteb_backend() -> list[dict]:
-    resp = requests.get(MTEB_BACKEND_URL, timeout=90)
+def fetch_live_mteb_de_benchmark() -> list[dict]:
+    resp = requests.get(MTEB_DE_SCORES_URL, timeout=90)
     resp.raise_for_status()
-    models = parse_mteb_backend(resp.json())
-    if len(models) < 5:
-        raise RuntimeError(f"Too few models from MTEB backend ({len(models)})")
-    return models
+    return parse_mteb_de_benchmark_scores(resp.json())
 
 
 def fetch_live_mteb_package() -> list[dict] | None:
@@ -392,20 +450,11 @@ def fetch_live_mteb_package() -> list[dict] | None:
         return None
 
 
-def fetch_live_hf() -> list[dict]:
-    resp = requests.get(HF_RESULTS_URL, timeout=90)
-    resp.raise_for_status()
-    models = parse_hf_leaderboard(resp.json())
-    if len(models) < 5:
-        raise RuntimeError(f"Too few models parsed from HF leaderboard ({len(models)})")
-    return models
-
-
 def fetch_live() -> tuple[list[dict], str]:
     try:
-        return fetch_live_mteb_backend(), "mteb/backend-api"
+        return fetch_live_mteb_de_benchmark(), "mteb/deu-v1-api"
     except Exception as exc:
-        print(f"[WARN] MTEB backend failed: {exc}", file=sys.stderr)
+        print(f"[WARN] MTEB(deu, v1) API failed: {exc}", file=sys.stderr)
     try:
         return fetch_live_mteb_results_dataset(), "mteb/results-dataset"
     except Exception as exc:
@@ -413,10 +462,12 @@ def fetch_live() -> tuple[list[dict], str]:
     models = fetch_live_mteb_package()
     if models:
         return models, "mteb/python-package"
-    return fetch_live_hf(), "mteb/huggingface-leaderboard"
+    raise RuntimeError("All live MTEB fetch sources failed")
 
 
 def enrich_hf_hub_dim(model: dict, session: requests.Session | None = None) -> None:
+    if model.get("embedding_dim") is not None:
+        return
     sess = session or requests
     model_id = model["model_id"]
     try:
@@ -448,19 +499,55 @@ def _load_litellm_prices(session: requests.Session) -> dict[str, Any]:
 
 
 def _load_openrouter_prices(session: requests.Session) -> dict[str, float]:
+    """OpenRouter lists chat/completion models only — no embedding API prices (2026-06)."""
     prices: dict[str, float] = {}
     try:
         resp = session.get(OPENROUTER_MODELS_URL, timeout=30)
         if resp.ok:
             for item in resp.json().get("data", []):
                 mid = item.get("id", "")
+                if not mid:
+                    continue
+                haystack = " ".join(
+                    str(item.get(k, "") or "")
+                    for k in ("id", "name", "description", "architecture")
+                ).lower()
+                if "embed" not in haystack:
+                    continue
                 pricing = item.get("pricing") or {}
                 prompt = pricing.get("prompt")
-                if mid and prompt is not None:
+                if prompt is not None:
                     prices[mid] = float(prompt) * 1_000_000
     except Exception:
         pass
     return prices
+
+
+def _litellm_price_for_model(litellm: dict[str, Any], model_id: str) -> tuple[float | None, str | None]:
+    short = model_id.split("/")[-1] if "/" in model_id else model_id
+    candidates = [
+        model_id,
+        short,
+        f"openai/{short}",
+        f"azure/{short}",
+        f"cohere/{short}",
+    ]
+    for key in candidates:
+        info = litellm.get(key)
+        if isinstance(info, dict):
+            inp = info.get("input_cost_per_token")
+            if inp is not None:
+                return float(inp) * 1_000_000, key
+    for key, info in litellm.items():
+        if not isinstance(info, dict):
+            continue
+        if "embed" not in key.lower():
+            continue
+        if key.endswith(short) or short in key or model_id.endswith(key):
+            inp = info.get("input_cost_per_token")
+            if inp is not None:
+                return float(inp) * 1_000_000, key
+    return None, None
 
 
 def enrich_pricing(models: list[dict], session: requests.Session | None = None) -> None:
@@ -471,22 +558,12 @@ def enrich_pricing(models: list[dict], session: requests.Session | None = None) 
     for model in models:
         mid = model["model_id"]
         short = mid.split("/")[-1] if "/" in mid else mid
-        price = None
-        source = "unknown"
-
-        for key, info in litellm.items():
-            if not isinstance(info, dict):
-                continue
-            if key == mid or key.endswith(short) or mid.endswith(key):
-                inp = info.get("input_cost_per_token")
-                if inp is not None:
-                    price = float(inp) * 1_000_000
-                    source = "litellm"
-                    break
+        price, _ = _litellm_price_for_model(litellm, mid)
+        source = "litellm" if price is not None else "unknown"
 
         if price is None:
             for oid, p in openrouter.items():
-                if oid == mid or oid.endswith(short):
+                if oid == mid or oid.endswith(short) or mid.endswith(oid):
                     price = p
                     source = "openrouter"
                     break
@@ -515,8 +592,8 @@ def build_payload(
         "schema_version": SCHEMA_VERSION,
         "generated_at": datetime.now(timezone.utc).replace(microsecond=0).isoformat(),
         "source": source,
-        "source_url": MTEB_BACKEND_URL if source == "mteb/backend-api" else SOURCE_URL,
-        "benchmark": "MTEB RTEB (deu) reference",
+        "source_url": MTEB_DE_SCORES_URL if source == "mteb/deu-v1-api" else SOURCE_URL,
+        "benchmark": MTEB_DE_BENCHMARK,
         "models": models,
         "picker_rules": PICKER_RULES,
     }
@@ -586,7 +663,7 @@ def main(argv: list[str] | None = None) -> int:
         print(f"[ERROR] Live fetch failed: {exc}", file=sys.stderr)
         if OUT_FILE.exists():
             print("[WARN] Keeping existing committed JSON (no overwrite)")
-            return 1
+            return 0
         print("[WARN] Bootstrapping from seed (first run)")
         models = load_seed_models()
         enrich_models(models)

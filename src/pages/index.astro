@@ -18,56 +18,56 @@ const wfDeploy =
   'https://github.com/IxI-Enki/project-diploma-performance-analysis/actions/workflows/deploy_pages.yml';
 const wfData =
   'https://github.com/IxI-Enki/project-diploma-performance-analysis/actions/workflows/update_data.yml';
-const hfDims = models.filter((m) => m.dim_source === 'hf_hub').length;
+const hfDims = models.filter((m) => m.dim_source === 'hf_hub' || m.dim_source === 'mteb_api').length;
 const litellmPrices = models.filter((m) => m.price_source === 'litellm').length;
 const openrouterPrices = models.filter((m) => m.price_source === 'openrouter').length;
-const liveOk = data.fallback !== true && data.source !== 'seed/curated';
+const liveOk = data.source === 'mteb/deu-v1-api';
 const debugSources = [
   {
     id: 'mteb_api',
-    label: 'MTEB leaderboard backend API',
-    ok: liveOk,
+    label: 'MTEB(deu, v1) leaderboard API',
+    status: liveOk ? 'ok' : data.fallback ? 'fail' : 'warn',
     detail: data.source,
     workflowUrl: wfDeploy,
   },
   {
     id: 'hf_hub',
     label: 'HF Hub embedding dimensions',
-    ok: hfDims > 0,
+    status: hfDims > 0 ? 'ok' : 'warn',
     detail: `${hfDims}/${models.length} models`,
     workflowUrl: wfDeploy,
   },
   {
     id: 'litellm',
     label: 'LiteLLM pricing enrichment',
-    ok: litellmPrices > 0,
-    detail: `${litellmPrices} priced`,
+    status: litellmPrices > 0 ? 'ok' : 'warn',
+    detail: litellmPrices > 0 ? `${litellmPrices} priced` : 'No HF slugs matched LiteLLM embedding keys',
     workflowUrl: wfDeploy,
   },
   {
     id: 'openrouter',
     label: 'OpenRouter pricing enrichment',
-    ok: openrouterPrices > 0,
-    detail: `${openrouterPrices} priced`,
+    status: openrouterPrices > 0 ? 'ok' : 'warn',
+    detail: openrouterPrices > 0 ? `${openrouterPrices} priced` : 'N/A — OpenRouter has no embedding API prices',
     workflowUrl: wfDeploy,
   },
   {
     id: 'seed',
     label: 'Seed/bootstrap snapshot (--seed-only)',
-    ok: data.fallback === true ? false : null,
+    status: data.fallback === true ? 'fail' : 'unknown',
     workflowUrl: wfData,
   },
   {
     id: 'validate',
     label: 'validate_json schema gate',
-    ok: models.length >= 20,
+    status: models.length >= 20 ? 'ok' : 'fail',
     detail: `${models.length} models`,
     workflowUrl: wfDeploy,
   },
   {
     id: 'deploy',
     label: 'Full deploy pipeline (fetch + build + Pages)',
-    ok: null,
+    status: 'unknown',
     workflowUrl: wfDeploy,
   },
 ];

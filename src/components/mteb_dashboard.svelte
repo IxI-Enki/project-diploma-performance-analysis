@@ -134,37 +134,37 @@
   </div>
 
   <div class="picker-options filter-row">
-    <label>
+    <label for="mteb-filter-task">
       Task
-      <select bind:value={filter.task}>
+      <select id="mteb-filter-task" name="task" bind:value={filter.task}>
         <option value="retrieval">Retrieval</option>
         <option value="clustering">Clustering</option>
         <option value="classification">Classification</option>
         <option value="sts">STS</option>
       </select>
     </label>
-    <label>
+    <label for="mteb-filter-search">
       Search
-      <input type="search" bind:value={filter.search} placeholder="model id…" />
+      <input id="mteb-filter-search" name="search" type="search" bind:value={filter.search} placeholder="model id…" />
     </label>
-    <label>
-      <input type="checkbox" bind:checked={filter.open_only} /> Open only
+    <label for="mteb-filter-open">
+      <input id="mteb-filter-open" name="open_only" type="checkbox" bind:checked={filter.open_only} /> Open only
     </label>
-    <label>
+    <label for="mteb-filter-dim">
       Max dim
-      <input type="number" bind:value={filter.dim_max} placeholder="any" min="0" />
+      <input id="mteb-filter-dim" name="dim_max" type="number" bind:value={filter.dim_max} placeholder="any" min="0" />
     </label>
-    <label>
+    <label for="mteb-filter-price">
       Price
-      <select bind:value={filter.price_band}>
+      <select id="mteb-filter-price" name="price_band" bind:value={filter.price_band}>
         <option value={null}>Any</option>
         <option value="free">Free / unknown</option>
         <option value="paid">Paid API</option>
       </select>
     </label>
-    <label>
+    <label for="mteb-filter-sort">
       Sort
-      <select bind:value={filter.sort}>
+      <select id="mteb-filter-sort" name="sort" bind:value={filter.sort}>
         <option value="avg_score">Avg score</option>
         <option value="task">Current task</option>
       </select>

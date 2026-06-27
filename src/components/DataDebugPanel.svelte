@@ -2,10 +2,14 @@
   import { onMount } from 'svelte';
   import { assessFreshness, type FreshnessAssessment } from '../lib/data_freshness';
 
+  type SourceStatusLevel = 'ok' | 'warn' | 'fail' | 'unknown';
+
   interface SourceStatus {
     id: string;
     label: string;
-    ok: boolean | null;
+    /** @deprecated use status */
+    ok?: boolean | null;
+    status?: SourceStatusLevel;
     detail?: string;
     workflowUrl: string;
   }
@@ -32,9 +36,10 @@
     nowLabel = new Date().toISOString();
   });
 
-  function sourceBadge(ok: boolean | null): string {
-    if (ok === true) return 'ok';
-    if (ok === false) return 'fail';
+  function sourceLevel(src: SourceStatus): SourceStatusLevel {
+    if (src.status) return src.status;
+    if (src.ok === true) return 'ok';
+    if (src.ok === false) return 'fail';
     return 'unknown';
   }
 </script>
@@ -70,12 +75,14 @@
 
     <p class="debug-hint">
       Force-fetch runs in GitHub Actions (not in the browser). Each button opens the workflow to run manually.
+      Status: <strong>ok</strong> = healthy, <strong>warn</strong> = expected gap, <strong>fail</strong> = action needed.
     </p>
 
     <div class="debug-sources">
       {#each sources as src}
+        {@const level = sourceLevel(src)}
         <div class="source-row">
-          <span class={`src-pill src-pill--${sourceBadge(src.ok)}`}>{sourceBadge(src.ok)}</span>
+          <span class={`src-pill src-pill--${level}`}>{level}</span>
           <span class="source-label">{src.label}</span>
           {#if src.detail}<span class="source-detail mono">{src.detail}</span>{/if}
           <a class="btn btn-sm debug-btn" href={src.workflowUrl} target="_blank" rel="noopener">
@@ -144,6 +151,7 @@
     font-weight: 600;
   }
   .src-pill--ok { background: rgba(70, 113, 163, 0.2); color: var(--success); }
+  .src-pill--warn { background: rgba(229, 168, 50, 0.25); color: var(--warning); }
   .src-pill--fail { background: rgba(179, 49, 48, 0.2); color: var(--error); }
   .src-pill--unknown { background: rgba(122, 144, 168, 0.2); color: var(--muted); }
   .freshness-badge {
