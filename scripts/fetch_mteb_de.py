@@ -35,6 +35,27 @@ SOURCE_URL = "https://huggingface.co/spaces/mteb/leaderboard"
 MTEB_RESULTS_REPO = "mteb/results"
 MTEB_RESULTS_SHARDS = 4
 MTEB_DE_BENCHMARK = "MTEB(deu, v1)"
+MTEB_DE_TASK_TYPES: dict[str, str] = {
+    "AmazonCounterfactualClassification": "Classification",
+    "AmazonReviewsClassification": "Classification",
+    "MTOPDomainClassification": "Classification",
+    "MTOPIntentClassification": "Classification",
+    "MassiveIntentClassification": "Classification",
+    "MassiveScenarioClassification": "Classification",
+    "BlurbsClusteringP2P": "Clustering",
+    "BlurbsClusteringS2S": "Clustering",
+    "TenKGnadClusteringP2P": "Clustering",
+    "TenKGnadClusteringS2S": "Clustering",
+    "FalseFriendsGermanEnglish": "PairClassification",
+    "PawsXPairClassification": "PairClassification",
+    "MIRACLReranking": "Reranking",
+    "GermanQuAD-Retrieval": "Retrieval",
+    "GermanDPR": "Retrieval",
+    "XMarket": "Retrieval",
+    "GerDaLIR": "Retrieval",
+    "GermanSTSBenchmark": "STS",
+    "STS22": "STS",
+}
 MTEB_TASK_TYPE_MAP = {
     "Retrieval": "retrieval",
     "Reranking": "retrieval",
@@ -213,13 +234,6 @@ def _is_open_license(license_val: str | None) -> bool:
 
 
 
-def _mteb_de_task_types() -> dict[str, str]:
-    import mteb
-
-    bench = mteb.get_benchmark(MTEB_DE_BENCHMARK)
-    return {task.metadata.name: task.metadata.type for task in bench.tasks}
-
-
 def _normalize_score(score: float) -> float:
     return round(float(score) * 100, 2) if score <= 1 else round(float(score), 2)
 
@@ -282,8 +296,7 @@ def fetch_live_mteb_results_dataset() -> list[dict]:
     import pyarrow.parquet as pq
     from huggingface_hub import hf_hub_download
 
-    warnings.filterwarnings("ignore", category=UserWarning, module="mteb")
-    type_by_task = _mteb_de_task_types()
+    type_by_task = MTEB_DE_TASK_TYPES
     de_tasks = set(type_by_task)
     rows: list[tuple[str, str, str | None, float | None]] = []
 
