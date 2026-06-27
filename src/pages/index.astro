@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import MtebDashboard from '../components/mteb_dashboard.svelte';
+import DataDebugPanel from '../components/DataDebugPanel.svelte';
 import leaderboard from '../lib/data/mteb_de_leaderboard.json';
 import manifest from '../lib/data/manifest.json';
 import type { LeaderboardSnapshot, Manifest } from '../lib/types/mteb';
@@ -13,15 +14,80 @@ const base = import.meta.env.BASE_URL;
 const models = data.models.sort((a, b) => b.avg_score - a.avg_score);
 const generatedAt = new Date(meta.generated_at).toLocaleString('en-GB', { timeZone: 'UTC' }) + ' UTC';
 const pickerRules = data.picker_rules ?? [];
+const wfDeploy =
+  'https://github.com/IxI-Enki/project-diploma-performance-analysis/actions/workflows/deploy_pages.yml';
+const wfData =
+  'https://github.com/IxI-Enki/project-diploma-performance-analysis/actions/workflows/update_data.yml';
+const hfDims = models.filter((m) => m.dim_source === 'hf_hub').length;
+const litellmPrices = models.filter((m) => m.price_source === 'litellm').length;
+const openrouterPrices = models.filter((m) => m.price_source === 'openrouter').length;
+const liveOk = data.fallback !== true && data.source !== 'seed/curated';
+const debugSources = [
+  {
+    id: 'mteb_api',
+    label: 'MTEB leaderboard backend API',
+    ok: liveOk,
+    detail: data.source,
+    workflowUrl: wfDeploy,
+  },
+  {
+    id: 'hf_hub',
+    label: 'HF Hub embedding dimensions',
+    ok: hfDims > 0,
+    detail: `${hfDims}/${models.length} models`,
+    workflowUrl: wfDeploy,
+  },
+  {
+    id: 'litellm',
+    label: 'LiteLLM pricing enrichment',
+    ok: litellmPrices > 0,
+    detail: `${litellmPrices} priced`,
+    workflowUrl: wfDeploy,
+  },
+  {
+    id: 'openrouter',
+    label: 'OpenRouter pricing enrichment',
+    ok: openrouterPrices > 0,
+    detail: `${openrouterPrices} priced`,
+    workflowUrl: wfDeploy,
+  },
+  {
+    id: 'seed',
+    label: 'Seed/bootstrap snapshot (--seed-only)',
+    ok: data.fallback === true ? false : null,
+    workflowUrl: wfData,
+  },
+  {
+    id: 'validate',
+    label: 'validate_json schema gate',
+    ok: models.length >= 20,
+    detail: `${models.length} models`,
+    workflowUrl: wfDeploy,
+  },
+  {
+    id: 'deploy',
+    label: 'Full deploy pipeline (fetch + build + Pages)',
+    ok: null,
+    workflowUrl: wfDeploy,
+  },
+];
 ---
 
 <BaseLayout
   fallback={data.fallback === true}
   generatedAt={generatedAt}
+  generatedAtIso={meta.generated_at}
   source={data.source}
 >
   <section>
     <div class="wrap">
+      <DataDebugPanel
+        client:load
+        generatedAt={meta.generated_at}
+        staleWarning={meta.stale_warning}
+        fallback={data.fallback === true}
+        sources={debugSources}
+      />
       <div class="card section-band">
         <div class="sec-head">
           <h2>Leaderboard</h2>

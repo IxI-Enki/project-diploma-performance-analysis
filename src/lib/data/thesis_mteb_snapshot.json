@@ -1,0 +1,1639 @@
+{
+  "schema_version": 1,
+  "captured_at": "2026-02-16",
+  "source_file": "mteb_leaderboard_results_2026-02-16.csv",
+  "source_note": "Frozen MTEB leaderboard export captured for diploma thesis citation. Not live data.",
+  "built_at": "2026-06-27T17:30:31.302Z",
+  "row_count": 162,
+  "rows": [
+    {
+      "rank": 1,
+      "model_name": "Octen-Embedding-8B",
+      "model_url": "https://huggingface.co/bflhc/Octen-Embedding-8B",
+      "memory_mb": 14433,
+      "params_b": 7.567,
+      "embedding_dim": 4096,
+      "max_tokens": 32768,
+      "mean_task": 74.05
+    },
+    {
+      "rank": 2,
+      "model_name": "Octen-Embedding-4B",
+      "model_url": "https://huggingface.co/bflhc/Octen-Embedding-4B",
+      "memory_mb": 7671,
+      "params_b": 4.022,
+      "embedding_dim": 2560,
+      "max_tokens": 32768,
+      "mean_task": 73.25
+    },
+    {
+      "rank": 3,
+      "model_name": "PIXIE-Rune-v1.0",
+      "model_url": "https://huggingface.co/telepix/PIXIE-Rune-v1.0",
+      "memory_mb": 2166,
+      "params_b": 0.568,
+      "embedding_dim": 1024,
+      "max_tokens": 6144,
+      "mean_task": 69.81
+    },
+    {
+      "rank": 4,
+      "model_name": "MoD-Embedding",
+      "model_url": "https://huggingface.co/bflhc/MoD-Embedding",
+      "memory_mb": 7671,
+      "params_b": 4.022,
+      "embedding_dim": 2560,
+      "max_tokens": 32768,
+      "mean_task": 68.53
+    },
+    {
+      "rank": 5,
+      "model_name": "Qwen3-Embedding-8B",
+      "model_url": "https://huggingface.co/Qwen/Qwen3-Embedding-8B",
+      "memory_mb": 14433,
+      "params_b": 7.567,
+      "embedding_dim": 4096,
+      "max_tokens": 32768,
+      "mean_task": 66.85
+    },
+    {
+      "rank": 6,
+      "model_name": "Octen-Embedding-0.6B",
+      "model_url": "https://huggingface.co/bflhc/Octen-Embedding-0.6B",
+      "memory_mb": 1136,
+      "params_b": 0.596,
+      "embedding_dim": 1024,
+      "max_tokens": 32768,
+      "mean_task": 65.66
+    },
+    {
+      "rank": 7,
+      "model_name": "snowflake-arctic-embed-l-v2.0",
+      "model_url": "https://huggingface.co/Snowflake/snowflake-arctic-embed-l-v2.0",
+      "memory_mb": 2166,
+      "params_b": 0.568,
+      "embedding_dim": 1024,
+      "max_tokens": 8192,
+      "mean_task": 65.48
+    },
+    {
+      "rank": 8,
+      "model_name": "Euler-Legal-Embedding-V1",
+      "model_url": "https://huggingface.co/Mira190/Euler-Legal-Embedding-V1",
+      "memory_mb": 15618,
+      "params_b": 7.567,
+      "embedding_dim": 4096,
+      "max_tokens": 1536,
+      "mean_task": 64.76
+    },
+    {
+      "rank": 9,
+      "model_name": "jina-embeddings-v4",
+      "model_url": "https://huggingface.co/jinaai/jina-embeddings-v4",
+      "memory_mb": 7500,
+      "params_b": 3.935,
+      "embedding_dim": 2048,
+      "max_tokens": 32768,
+      "mean_task": 63.88
+    },
+    {
+      "rank": 10,
+      "model_name": "inf-retriever-v1",
+      "model_url": "https://huggingface.co/infly/inf-retriever-v1",
+      "memory_mb": 13483,
+      "params_b": 7.069,
+      "embedding_dim": 3584,
+      "max_tokens": 32768,
+      "mean_task": 63.22
+    },
+    {
+      "rank": 11,
+      "model_name": "inf-retriever-v1-1.5b",
+      "model_url": "https://huggingface.co/infly/inf-retriever-v1-1.5b",
+      "memory_mb": 2944,
+      "params_b": 1.543,
+      "embedding_dim": 1536,
+      "max_tokens": 32768,
+      "mean_task": 62.08
+    },
+    {
+      "rank": 12,
+      "model_name": "bge-m3-unsupervised",
+      "model_url": "https://huggingface.co/BAAI/bge-m3-unsupervised",
+      "memory_mb": 2167,
+      "params_b": 0.568,
+      "embedding_dim": 1024,
+      "max_tokens": 8192,
+      "mean_task": 60.24
+    },
+    {
+      "rank": 13,
+      "model_name": "jina-embeddings-v3",
+      "model_url": "https://huggingface.co/jinaai/jina-embeddings-v3",
+      "memory_mb": 1092,
+      "params_b": 0.572,
+      "embedding_dim": 1024,
+      "max_tokens": 8194,
+      "mean_task": 59.35
+    },
+    {
+      "rank": 14,
+      "model_name": "BOOM_4B_v1",
+      "model_url": "https://huggingface.co/ICT-TIME-and-Querit/BOOM_4B_v1",
+      "memory_mb": 7671,
+      "params_b": 4.022,
+      "embedding_dim": 2560,
+      "max_tokens": 32768,
+      "mean_task": 58.76
+    },
+    {
+      "rank": 15,
+      "model_name": "snowflake-arctic-embed-m-v2.0",
+      "model_url": "https://huggingface.co/Snowflake/snowflake-arctic-embed-m-v2.0",
+      "memory_mb": 1165,
+      "params_b": 0.305,
+      "embedding_dim": 768,
+      "max_tokens": 8192,
+      "mean_task": 57.95
+    },
+    {
+      "rank": 16,
+      "model_name": "bge-m3-custom-fr",
+      "model_url": "https://huggingface.co/manu/bge-m3-custom-fr",
+      "memory_mb": 2166,
+      "params_b": 0.568,
+      "embedding_dim": 1024,
+      "max_tokens": 8194,
+      "mean_task": 55.53
+    },
+    {
+      "rank": 17,
+      "model_name": "jasper_en_vision_language_v1",
+      "model_url": "https://huggingface.co/infgrad/jasper_en_vision_language_v1",
+      "memory_mb": 3802,
+      "params_b": 1.565,
+      "embedding_dim": 8960,
+      "max_tokens": 131072,
+      "mean_task": 52.13
+    },
+    {
+      "rank": 18,
+      "model_name": "multilingual-e5-large-instruct",
+      "model_url": "https://huggingface.co/intfloat/multilingual-e5-large-instruct",
+      "memory_mb": 1068,
+      "params_b": 0.56,
+      "embedding_dim": 1024,
+      "max_tokens": 514,
+      "mean_task": 51.25
+    },
+    {
+      "rank": 19,
+      "model_name": "bge-m3",
+      "model_url": "https://huggingface.co/BAAI/bge-m3",
+      "memory_mb": 2167,
+      "params_b": 0.568,
+      "embedding_dim": 1024,
+      "max_tokens": 8194,
+      "mean_task": 50.36
+    },
+    {
+      "rank": 20,
+      "model_name": "KaLM-embedding-multilingual-mini-instruct-v1",
+      "model_url": "https://huggingface.co/HIT-TMG/KaLM-embedding-multilingual-mini-instruct-v1",
+      "memory_mb": 1885,
+      "params_b": 0.494,
+      "embedding_dim": 896,
+      "max_tokens": 512,
+      "mean_task": 48.76
+    },
+    {
+      "rank": 21,
+      "model_name": "Solon-embeddings-large-0.1",
+      "model_url": "https://huggingface.co/OrdalieTech/Solon-embeddings-large-0.1",
+      "memory_mb": 2136,
+      "params_b": 0.56,
+      "embedding_dim": 1024,
+      "max_tokens": 514,
+      "mean_task": 48.16
+    },
+    {
+      "rank": 22,
+      "model_name": "bilingual-embedding-large",
+      "model_url": "https://huggingface.co/Lajavaness/bilingual-embedding-large",
+      "memory_mb": 2136,
+      "params_b": 0.56,
+      "embedding_dim": 1024,
+      "max_tokens": 514,
+      "mean_task": 48.12
+    },
+    {
+      "rank": 23,
+      "model_name": "multilingual-e5-base",
+      "model_url": "https://huggingface.co/intfloat/multilingual-e5-base",
+      "memory_mb": 1061,
+      "params_b": 0.278,
+      "embedding_dim": 768,
+      "max_tokens": 514,
+      "mean_task": 47.85
+    },
+    {
+      "rank": 24,
+      "model_name": "multilingual-e5-small",
+      "model_url": "https://huggingface.co/intfloat/multilingual-e5-small",
+      "memory_mb": 449,
+      "params_b": 0.118,
+      "embedding_dim": 384,
+      "max_tokens": 512,
+      "mean_task": 47.8
+    },
+    {
+      "rank": 25,
+      "model_name": "gte-Qwen2-7B-instruct",
+      "model_url": "https://huggingface.co/Alibaba-NLP/gte-Qwen2-7B-instruct",
+      "memory_mb": 29040,
+      "params_b": 7.069,
+      "embedding_dim": 3584,
+      "max_tokens": 32768,
+      "mean_task": 46.1
+    },
+    {
+      "rank": 26,
+      "model_name": "USER-bge-m3",
+      "model_url": "https://huggingface.co/deepvk/USER-base",
+      "memory_mb": 1370,
+      "params_b": 0.359,
+      "embedding_dim": 1024,
+      "max_tokens": 8194,
+      "mean_task": 45.86
+    },
+    {
+      "rank": 27,
+      "model_name": "gte-Qwen2-1.5B-instruct",
+      "model_url": "https://huggingface.co/Alibaba-NLP/gte-Qwen2-1.5B-instruct",
+      "memory_mb": 6776,
+      "params_b": 1.543,
+      "embedding_dim": 8960,
+      "max_tokens": 32768,
+      "mean_task": 45.85
+    },
+    {
+      "rank": 28,
+      "model_name": "gte-multilingual-base",
+      "model_url": "https://huggingface.co/Alibaba-NLP/gte-multilingual-base",
+      "memory_mb": 582,
+      "params_b": 0.305,
+      "embedding_dim": 768,
+      "max_tokens": 8192,
+      "mean_task": 45.7
+    },
+    {
+      "rank": 29,
+      "model_name": "bilingual-embedding-base",
+      "model_url": "https://huggingface.co/Lajavaness/bilingual-embedding-base",
+      "memory_mb": 1061,
+      "params_b": 0.278,
+      "embedding_dim": 768,
+      "max_tokens": 514,
+      "mean_task": 45.41
+    },
+    {
+      "rank": 30,
+      "model_name": "SFR-Embedding-Mistral",
+      "model_url": "https://huggingface.co/Salesforce/SFR-Embedding-Mistral",
+      "memory_mb": 13563,
+      "params_b": 7.111,
+      "embedding_dim": 4096,
+      "max_tokens": 32768,
+      "mean_task": 45.08
+    },
+    {
+      "rank": 31,
+      "model_name": "e5-mistral-7b-instruct",
+      "model_url": "https://huggingface.co/intfloat/e5-mistral-7b-instruct",
+      "memory_mb": 13563,
+      "params_b": 7.111,
+      "embedding_dim": 4096,
+      "max_tokens": 32768,
+      "mean_task": 44.41
+    },
+    {
+      "rank": 32,
+      "model_name": "SFR-Embedding-2_R",
+      "model_url": "https://huggingface.co/Salesforce/SFR-Embedding-2_R",
+      "memory_mb": 13563,
+      "params_b": 7.111,
+      "embedding_dim": 4096,
+      "max_tokens": 32768,
+      "mean_task": 44.24
+    },
+    {
+      "rank": 33,
+      "model_name": "GritLM-7B",
+      "model_url": "https://huggingface.co/GritLM/GritLM-7B",
+      "memory_mb": 13813,
+      "params_b": 7.24,
+      "embedding_dim": 4096,
+      "max_tokens": 32768,
+      "mean_task": 44.18
+    },
+    {
+      "rank": 34,
+      "model_name": "bilingual-embedding-small",
+      "model_url": "https://huggingface.co/Lajavaness/bilingual-embedding-small",
+      "memory_mb": 449,
+      "params_b": 0.118,
+      "embedding_dim": 384,
+      "max_tokens": 512,
+      "mean_task": 44.14
+    },
+    {
+      "rank": 35,
+      "model_name": "German_Semantic_STS_V2",
+      "model_url": "https://huggingface.co/aari1995/German_Semantic_STS_V2",
+      "memory_mb": 1281,
+      "params_b": 0.336,
+      "embedding_dim": 1024,
+      "max_tokens": 512,
+      "mean_task": 43.96
+    },
+    {
+      "rank": 36,
+      "model_name": "multilingual-e5-large",
+      "model_url": "https://huggingface.co/intfloat/multilingual-e5-large",
+      "memory_mb": 2136,
+      "params_b": 0.56,
+      "embedding_dim": 1024,
+      "max_tokens": 514,
+      "mean_task": 43.17
+    },
+    {
+      "rank": 37,
+      "model_name": "KaLM-embedding-multilingual-mini-v1",
+      "model_url": "https://huggingface.co/HIT-TMG/KaLM-embedding-multilingual-mini-v1",
+      "memory_mb": 1885,
+      "params_b": 0.494,
+      "embedding_dim": 896,
+      "max_tokens": 512,
+      "mean_task": 41.92
+    },
+    {
+      "rank": 38,
+      "model_name": "Linq-Embed-Mistral",
+      "model_url": "https://huggingface.co/Linq-AI-Research/Linq-Embed-Mistral",
+      "memory_mb": 13563,
+      "params_b": 7.111,
+      "embedding_dim": 4096,
+      "max_tokens": 32768,
+      "mean_task": 41.83
+    },
+    {
+      "rank": 39,
+      "model_name": "static-similarity-mrl-multilingual-v1",
+      "model_url": "https://huggingface.co/sentence-transformers/static-similarity-mrl-multilingual-v1",
+      "memory_mb": 413,
+      "params_b": 0.108,
+      "embedding_dim": 1024,
+      "max_tokens": null,
+      "mean_task": 41.1
+    },
+    {
+      "rank": 40,
+      "model_name": "stella_en_1.5B_v5",
+      "model_url": "https://huggingface.co/NovaSearch/stella_en_1.5B_v5",
+      "memory_mb": 5887,
+      "params_b": 1.54,
+      "embedding_dim": 8960,
+      "max_tokens": 131072,
+      "mean_task": 40.44
+    },
+    {
+      "rank": 41,
+      "model_name": "static-retrieval-mrl-en-v1",
+      "model_url": "https://huggingface.co/sentence-transformers/static-retrieval-mrl-en-v1",
+      "memory_mb": 119,
+      "params_b": 0.031,
+      "embedding_dim": 1024,
+      "max_tokens": null,
+      "mean_task": 38.59
+    },
+    {
+      "rank": 42,
+      "model_name": "gte-Qwen1.5-7B-instruct",
+      "model_url": "https://huggingface.co/Alibaba-NLP/gte-Qwen1.5-7B-instruct",
+      "memory_mb": 29449,
+      "params_b": 7.099,
+      "embedding_dim": 4096,
+      "max_tokens": 32768,
+      "mean_task": 37.99
+    },
+    {
+      "rank": 43,
+      "model_name": "granite-embedding-278m-multilingual",
+      "model_url": "https://huggingface.co/ibm-granite/granite-embedding-278m-multilingual",
+      "memory_mb": 530,
+      "params_b": 0.278,
+      "embedding_dim": 768,
+      "max_tokens": 512,
+      "mean_task": 36.76
+    },
+    {
+      "rank": 44,
+      "model_name": "embedder-100p",
+      "model_url": "https://huggingface.co/deepfile/embedder-100p",
+      "memory_mb": 1061,
+      "params_b": 0.278,
+      "embedding_dim": 768,
+      "max_tokens": 514,
+      "mean_task": 35.31
+    },
+    {
+      "rank": 45,
+      "model_name": "Jasper-Token-Compression-600M",
+      "model_url": "https://huggingface.co/infgrad/Jasper-Token-Compression-600M",
+      "memory_mb": 2272,
+      "params_b": 0.607,
+      "embedding_dim": 2048,
+      "max_tokens": 32768,
+      "mean_task": 34.28
+    },
+    {
+      "rank": 46,
+      "model_name": "speed-embedding-7b-instruct",
+      "model_url": "https://huggingface.co/Haon-Chen/speed-embedding-7b-instruct",
+      "memory_mb": 13563,
+      "params_b": 7.111,
+      "embedding_dim": null,
+      "max_tokens": 32768,
+      "mean_task": 33.24
+    },
+    {
+      "rank": 47,
+      "model_name": "granite-embedding-107m-multilingual",
+      "model_url": "https://huggingface.co/ibm-granite/granite-embedding-107m-multilingual",
+      "memory_mb": 204,
+      "params_b": 0.107,
+      "embedding_dim": 384,
+      "max_tokens": 512,
+      "mean_task": 32.81
+    },
+    {
+      "rank": 48,
+      "model_name": "sentence_croissant_alpha_v0.4",
+      "model_url": "https://huggingface.co/manu/sentence_croissant_alpha_v0.4",
+      "memory_mb": 2441,
+      "params_b": 1.28,
+      "embedding_dim": 2048,
+      "max_tokens": 2048,
+      "mean_task": 30.96
+    },
+    {
+      "rank": 49,
+      "model_name": "potion-multilingual-128M",
+      "model_url": "https://huggingface.co/minishlab/potion-multilingual-128M",
+      "memory_mb": 489,
+      "params_b": 0.128,
+      "embedding_dim": 256,
+      "max_tokens": null,
+      "mean_task": 30.5
+    },
+    {
+      "rank": 50,
+      "model_name": "nomic-embed-text-v1-unsupervised",
+      "model_url": "https://huggingface.co/nomic-ai/nomic-embed-text-v1-unsupervised",
+      "memory_mb": null,
+      "params_b": 0.137,
+      "embedding_dim": 768,
+      "max_tokens": 8192,
+      "mean_task": 30.41
+    },
+    {
+      "rank": 51,
+      "model_name": "jina-embedding-b-en-v1",
+      "model_url": "https://huggingface.co/jinaai/jina-embedding-b-en-v1",
+      "memory_mb": 420,
+      "params_b": 0.11,
+      "embedding_dim": 768,
+      "max_tokens": 512,
+      "mean_task": 29.87
+    },
+    {
+      "rank": 52,
+      "model_name": "sentence_croissant_alpha_v0.3",
+      "model_url": "https://huggingface.co/manu/sentence_croissant_alpha_v0.3",
+      "memory_mb": 2441,
+      "params_b": 1.28,
+      "embedding_dim": 2048,
+      "max_tokens": 2048,
+      "mean_task": 29.76
+    },
+    {
+      "rank": 53,
+      "model_name": "arabic-english-sts-matryoshka",
+      "model_url": "https://huggingface.co/omarelshehy/arabic-english-sts-matryoshka",
+      "memory_mb": 2136,
+      "params_b": 0.56,
+      "embedding_dim": 1024,
+      "max_tokens": 514,
+      "mean_task": 28.67
+    },
+    {
+      "rank": 54,
+      "model_name": "gte-base-en-v1.5",
+      "model_url": "https://huggingface.co/Alibaba-NLP/gte-base-en-v1.5",
+      "memory_mb": null,
+      "params_b": 0.137,
+      "embedding_dim": 768,
+      "max_tokens": 8192,
+      "mean_task": 27.82
+    },
+    {
+      "rank": 55,
+      "model_name": "e5-large-v2",
+      "model_url": "https://huggingface.co/intfloat/e5-large-v2",
+      "memory_mb": 1278,
+      "params_b": 0.335,
+      "embedding_dim": 1024,
+      "max_tokens": 514,
+      "mean_task": 27.18
+    },
+    {
+      "rank": 56,
+      "model_name": "e5-large",
+      "model_url": "https://huggingface.co/intfloat/e5-large",
+      "memory_mb": 1278,
+      "params_b": 0.335,
+      "embedding_dim": 1024,
+      "max_tokens": 512,
+      "mean_task": 27.15
+    },
+    {
+      "rank": 57,
+      "model_name": "sentence_croissant_alpha_v0.2",
+      "model_url": "https://huggingface.co/manu/sentence_croissant_alpha_v0.2",
+      "memory_mb": 2441,
+      "params_b": 1.28,
+      "embedding_dim": 2048,
+      "max_tokens": 2048,
+      "mean_task": 26.98
+    },
+    {
+      "rank": 58,
+      "model_name": "e5-base-4k",
+      "model_url": "https://huggingface.co/dwzhu/e5-base-4k",
+      "memory_mb": null,
+      "params_b": 0.112,
+      "embedding_dim": null,
+      "max_tokens": 4096,
+      "mean_task": 26.9
+    },
+    {
+      "rank": 59,
+      "model_name": "nomic-embed-text-v1",
+      "model_url": "https://huggingface.co/nomic-ai/nomic-embed-text-v1",
+      "memory_mb": 522,
+      "params_b": 0.137,
+      "embedding_dim": 768,
+      "max_tokens": 8192,
+      "mean_task": 25.97
+    },
+    {
+      "rank": 60,
+      "model_name": "nomic-embed-text-v1-ablated",
+      "model_url": "https://huggingface.co/nomic-ai/nomic-embed-text-v1-ablated",
+      "memory_mb": null,
+      "params_b": 0.137,
+      "embedding_dim": 768,
+      "max_tokens": 8192,
+      "mean_task": 25.2
+    },
+    {
+      "rank": 61,
+      "model_name": "granite-embedding-small-english-r2",
+      "model_url": "https://huggingface.co/ibm-granite/granite-embedding-small-english-r2",
+      "memory_mb": 91,
+      "params_b": 0.048,
+      "embedding_dim": 384,
+      "max_tokens": 8192,
+      "mean_task": 24.61
+    },
+    {
+      "rank": 62,
+      "model_name": "jina-embedding-s-en-v1",
+      "model_url": "https://huggingface.co/jinaai/jina-embedding-s-en-v1",
+      "memory_mb": 134,
+      "params_b": 0.035,
+      "embedding_dim": 512,
+      "max_tokens": 512,
+      "mean_task": 23.62
+    },
+    {
+      "rank": 63,
+      "model_name": "granite-embedding-english-r2",
+      "model_url": "https://huggingface.co/ibm-granite/granite-embedding-english-r2",
+      "memory_mb": 284,
+      "params_b": 0.149,
+      "embedding_dim": 768,
+      "max_tokens": 8192,
+      "mean_task": 23.58
+    },
+    {
+      "rank": 64,
+      "model_name": "e5-base",
+      "model_url": "https://huggingface.co/intfloat/e5-base",
+      "memory_mb": 418,
+      "params_b": 0.109,
+      "embedding_dim": 768,
+      "max_tokens": 512,
+      "mean_task": 22.76
+    },
+    {
+      "rank": 65,
+      "model_name": "e5-base-v2",
+      "model_url": "https://huggingface.co/intfloat/e5-base-v2",
+      "memory_mb": 418,
+      "params_b": 0.109,
+      "embedding_dim": 768,
+      "max_tokens": 512,
+      "mean_task": 22.32
+    },
+    {
+      "rank": 66,
+      "model_name": "stella_en_400M_v5",
+      "model_url": "https://huggingface.co/NovaSearch/stella_en_400M_v5",
+      "memory_mb": 1660,
+      "params_b": 0.435,
+      "embedding_dim": 4096,
+      "max_tokens": 8192,
+      "mean_task": 21.71
+    },
+    {
+      "rank": 67,
+      "model_name": "LLM2Vec-Mistral-7B-Instruct-v2-mntp-supervised",
+      "model_url": "https://huggingface.co/McGill-NLP/LLM2Vec-Mistral-7B-Instruct-v2-mntp-supervised",
+      "memory_mb": 27126,
+      "params_b": 7.153,
+      "embedding_dim": 4096,
+      "max_tokens": 32768,
+      "mean_task": 21.49
+    },
+    {
+      "rank": 68,
+      "model_name": "snowflake-arctic-embed-l",
+      "model_url": "https://huggingface.co/Snowflake/snowflake-arctic-embed-l",
+      "memory_mb": 1274,
+      "params_b": 0.335,
+      "embedding_dim": 1024,
+      "max_tokens": 512,
+      "mean_task": 20.98
+    },
+    {
+      "rank": 69,
+      "model_name": "NV-Embed-v1",
+      "model_url": "https://huggingface.co/nvidia/NV-Embed-v1",
+      "memory_mb": 14975,
+      "params_b": 7.85,
+      "embedding_dim": 4096,
+      "max_tokens": 32768,
+      "mean_task": 20.7
+    },
+    {
+      "rank": 70,
+      "model_name": "e5-small",
+      "model_url": "https://huggingface.co/intfloat/e5-small",
+      "memory_mb": 127,
+      "params_b": 0.033,
+      "embedding_dim": 384,
+      "max_tokens": 512,
+      "mean_task": 20.48
+    },
+    {
+      "rank": 71,
+      "model_name": "Arabic-labse-Matryoshka",
+      "model_url": "https://huggingface.co/Omartificial-Intelligence-Space/Arabic-labse-Matryoshka",
+      "memory_mb": 1796,
+      "params_b": 0.471,
+      "embedding_dim": 768,
+      "max_tokens": 512,
+      "mean_task": 20.21
+    },
+    {
+      "rank": 72,
+      "model_name": "gte-large",
+      "model_url": "https://huggingface.co/thenlper/gte-large",
+      "memory_mb": 639,
+      "params_b": 0.335,
+      "embedding_dim": 1024,
+      "max_tokens": 512,
+      "mean_task": 19.82
+    },
+    {
+      "rank": 73,
+      "model_name": "e5-small-v2",
+      "model_url": "https://huggingface.co/intfloat/e5-small-v2",
+      "memory_mb": 127,
+      "params_b": 0.033,
+      "embedding_dim": 384,
+      "max_tokens": 512,
+      "mean_task": 19.67
+    },
+    {
+      "rank": 74,
+      "model_name": "bge-large-en",
+      "model_url": "https://huggingface.co/BAAI/bge-large-en",
+      "memory_mb": 1242,
+      "params_b": 0.335,
+      "embedding_dim": 1024,
+      "max_tokens": 512,
+      "mean_task": 18.8
+    },
+    {
+      "rank": 75,
+      "model_name": "NV-Embed-v2",
+      "model_url": "https://huggingface.co/nvidia/NV-Embed-v2",
+      "memory_mb": 14975,
+      "params_b": 7.85,
+      "embedding_dim": 4096,
+      "max_tokens": 32768,
+      "mean_task": 18.39
+    },
+    {
+      "rank": 76,
+      "model_name": "paraphrase-multilingual-mpnet-base-v2",
+      "model_url": "https://huggingface.co/sentence-transformers/paraphrase-multilingual-mpnet-base-v2",
+      "memory_mb": 1061,
+      "params_b": 0.278,
+      "embedding_dim": 768,
+      "max_tokens": 512,
+      "mean_task": 17.8
+    },
+    {
+      "rank": 77,
+      "model_name": "snowflake-arctic-embed-s",
+      "model_url": "https://huggingface.co/Snowflake/snowflake-arctic-embed-s",
+      "memory_mb": 127,
+      "params_b": 0.033,
+      "embedding_dim": 384,
+      "max_tokens": 512,
+      "mean_task": 17.65
+    },
+    {
+      "rank": 78,
+      "model_name": "b1ade-embed",
+      "model_url": "https://huggingface.co/w601sxs/b1ade-embed",
+      "memory_mb": 1278,
+      "params_b": 0.335,
+      "embedding_dim": 1024,
+      "max_tokens": 4096,
+      "mean_task": 17
+    },
+    {
+      "rank": 79,
+      "model_name": "mmlw-e5-large",
+      "model_url": "https://huggingface.co/sdadas/mmlw-e5-large",
+      "memory_mb": 2136,
+      "params_b": 0.56,
+      "embedding_dim": 1024,
+      "max_tokens": 514,
+      "mean_task": 16.84
+    },
+    {
+      "rank": 80,
+      "model_name": "Arabic-all-nli-triplet-Matryoshka",
+      "model_url": "https://huggingface.co/Omartificial-Intelligence-Space/Arabic-all-nli-triplet-Matryoshka",
+      "memory_mb": 1061,
+      "params_b": 0.278,
+      "embedding_dim": 768,
+      "max_tokens": 514,
+      "mean_task": 16.71
+    },
+    {
+      "rank": 81,
+      "model_name": "LaBSE",
+      "model_url": "https://huggingface.co/sentence-transformers/LaBSE",
+      "memory_mb": 1796,
+      "params_b": 0.471,
+      "embedding_dim": 768,
+      "max_tokens": 512,
+      "mean_task": 16.64
+    },
+    {
+      "rank": 82,
+      "model_name": "bge-large-en-v1.5",
+      "model_url": "https://huggingface.co/BAAI/bge-large-en-v1.5",
+      "memory_mb": 1242,
+      "params_b": 0.335,
+      "embedding_dim": 1024,
+      "max_tokens": 512,
+      "mean_task": 16.56
+    },
+    {
+      "rank": 83,
+      "model_name": "UAE-Large-V1",
+      "model_url": "https://huggingface.co/WhereIsAI/UAE-Large-V1",
+      "memory_mb": 1278,
+      "params_b": 0.335,
+      "embedding_dim": 1024,
+      "max_tokens": 512,
+      "mean_task": 16.49
+    },
+    {
+      "rank": 84,
+      "model_name": "mxbai-embed-large-v1",
+      "model_url": "https://huggingface.co/mixedbread-ai/mxbai-embed-large-v1",
+      "memory_mb": 639,
+      "params_b": 0.335,
+      "embedding_dim": 1024,
+      "max_tokens": 512,
+      "mean_task": 16.4
+    },
+    {
+      "rank": 85,
+      "model_name": "multi-qa-MiniLM-L6-cos-v1",
+      "model_url": "https://huggingface.co/sentence-transformers/multi-qa-MiniLM-L6-cos-v1",
+      "memory_mb": 87,
+      "params_b": 0.023,
+      "embedding_dim": 384,
+      "max_tokens": 512,
+      "mean_task": 16.23
+    },
+    {
+      "rank": 86,
+      "model_name": "bge-base-en",
+      "model_url": "https://huggingface.co/BAAI/bge-base-en",
+      "memory_mb": 390,
+      "params_b": 0.109,
+      "embedding_dim": 768,
+      "max_tokens": 512,
+      "mean_task": 16.15
+    },
+    {
+      "rank": 87,
+      "model_name": "GIST-Embedding-v0",
+      "model_url": "https://huggingface.co/avsolatorio/GIST-Embedding-v0",
+      "memory_mb": 418,
+      "params_b": 0.109,
+      "embedding_dim": 768,
+      "max_tokens": 512,
+      "mean_task": 16.13
+    },
+    {
+      "rank": 88,
+      "model_name": "potion-base-8M",
+      "model_url": "https://huggingface.co/minishlab/potion-base-8M",
+      "memory_mb": 29,
+      "params_b": 0.008,
+      "embedding_dim": 256,
+      "max_tokens": null,
+      "mean_task": 16.06
+    },
+    {
+      "rank": 89,
+      "model_name": "Ivysaur",
+      "model_url": "https://huggingface.co/Mihaiii/Ivysaur",
+      "memory_mb": 87,
+      "params_b": 0.023,
+      "embedding_dim": 384,
+      "max_tokens": 512,
+      "mean_task": 16.05
+    },
+    {
+      "rank": 90,
+      "model_name": "bge-base-en-v1.5",
+      "model_url": "https://huggingface.co/BAAI/bge-base-en-v1.5",
+      "memory_mb": 390,
+      "params_b": 0.109,
+      "embedding_dim": 768,
+      "max_tokens": 512,
+      "mean_task": 16.01
+    },
+    {
+      "rank": 91,
+      "model_name": "BiCA-base",
+      "model_url": "https://huggingface.co/bisectgroup/BiCA-base",
+      "memory_mb": 418,
+      "params_b": 0.109,
+      "embedding_dim": 768,
+      "max_tokens": 512,
+      "mean_task": 15.92
+    },
+    {
+      "rank": 92,
+      "model_name": "GIST-large-Embedding-v0",
+      "model_url": "https://huggingface.co/avsolatorio/GIST-large-Embedding-v0",
+      "memory_mb": 1278,
+      "params_b": 0.335,
+      "embedding_dim": 1024,
+      "max_tokens": 512,
+      "mean_task": 15.86
+    },
+    {
+      "rank": 93,
+      "model_name": "gte-base",
+      "model_url": "https://huggingface.co/thenlper/gte-base",
+      "memory_mb": 209,
+      "params_b": 0.109,
+      "embedding_dim": 768,
+      "max_tokens": 512,
+      "mean_task": 15.71
+    },
+    {
+      "rank": 94,
+      "model_name": "M2V_base_output",
+      "model_url": "https://huggingface.co/minishlab/M2V_base_output",
+      "memory_mb": 29,
+      "params_b": 0.008,
+      "embedding_dim": 256,
+      "max_tokens": null,
+      "mean_task": 15.42
+    },
+    {
+      "rank": 95,
+      "model_name": "snowflake-arctic-embed-m",
+      "model_url": "https://huggingface.co/Snowflake/snowflake-arctic-embed-m",
+      "memory_mb": 415,
+      "params_b": 0.109,
+      "embedding_dim": 768,
+      "max_tokens": 512,
+      "mean_task": 15.38
+    },
+    {
+      "rank": 96,
+      "model_name": "M2V_base_glove_subword",
+      "model_url": "https://huggingface.co/minishlab/M2V_base_glove_subword",
+      "memory_mb": 391,
+      "params_b": 0.103,
+      "embedding_dim": 256,
+      "max_tokens": null,
+      "mean_task": 15.37
+    },
+    {
+      "rank": 97,
+      "model_name": "STS-multilingual-mpnet-base-v2",
+      "model_url": "https://huggingface.co/Gameselo/STS-multilingual-mpnet-base-v2",
+      "memory_mb": 1061,
+      "params_b": 0.278,
+      "embedding_dim": 768,
+      "max_tokens": 514,
+      "mean_task": 14.75
+    },
+    {
+      "rank": 98,
+      "model_name": "gte-small",
+      "model_url": "https://huggingface.co/thenlper/gte-small",
+      "memory_mb": 64,
+      "params_b": 0.033,
+      "embedding_dim": 384,
+      "max_tokens": 512,
+      "mean_task": 14.67
+    },
+    {
+      "rank": 99,
+      "model_name": "LLM2Vec-Mistral-7B-Instruct-v2-mntp-unsup-simcse",
+      "model_url": "https://huggingface.co/McGill-NLP/LLM2Vec-Mistral-7B-Instruct-v2-mntp-unsup-simcse",
+      "memory_mb": 27126,
+      "params_b": 7.153,
+      "embedding_dim": 4096,
+      "max_tokens": 32768,
+      "mean_task": 14.6
+    },
+    {
+      "rank": 100,
+      "model_name": "Wartortle",
+      "model_url": "https://huggingface.co/Mihaiii/Wartortle",
+      "memory_mb": 66,
+      "params_b": 0.017,
+      "embedding_dim": 384,
+      "max_tokens": 512,
+      "mean_task": 14.54
+    },
+    {
+      "rank": 101,
+      "model_name": "GIST-all-MiniLM-L6-v2",
+      "model_url": "https://huggingface.co/avsolatorio/GIST-all-MiniLM-L6-v2",
+      "memory_mb": 87,
+      "params_b": 0.023,
+      "embedding_dim": 384,
+      "max_tokens": 512,
+      "mean_task": 14.21
+    },
+    {
+      "rank": 102,
+      "model_name": "Arabic-MiniLM-L12-v2-all-nli-triplet",
+      "model_url": "https://huggingface.co/Omartificial-Intelligence-Space/Arabic-MiniLM-L12-v2-all-nli-triplet",
+      "memory_mb": 449,
+      "params_b": 0.118,
+      "embedding_dim": 384,
+      "max_tokens": 512,
+      "mean_task": 13.94
+    },
+    {
+      "rank": 103,
+      "model_name": "stella-base-en-v2",
+      "model_url": "https://huggingface.co/infgrad/stella-base-en-v2",
+      "memory_mb": null,
+      "params_b": 0.109,
+      "embedding_dim": null,
+      "max_tokens": 512,
+      "mean_task": 13.79
+    },
+    {
+      "rank": 104,
+      "model_name": "Venusaur",
+      "model_url": "https://huggingface.co/Mihaiii/Venusaur",
+      "memory_mb": 60,
+      "params_b": 0.016,
+      "embedding_dim": 384,
+      "max_tokens": 512,
+      "mean_task": 13.62
+    },
+    {
+      "rank": 105,
+      "model_name": "mmlw-roberta-large",
+      "model_url": "https://huggingface.co/sdadas/mmlw-roberta-large",
+      "memory_mb": 1659,
+      "params_b": 0.435,
+      "embedding_dim": 1024,
+      "max_tokens": 514,
+      "mean_task": 13.59
+    },
+    {
+      "rank": 106,
+      "model_name": "Squirtle",
+      "model_url": "https://huggingface.co/Mihaiii/Squirtle",
+      "memory_mb": 60,
+      "params_b": 0.016,
+      "embedding_dim": 384,
+      "max_tokens": 512,
+      "mean_task": 13.44
+    },
+    {
+      "rank": 107,
+      "model_name": "paraphrase-multilingual-MiniLM-L12-v2",
+      "model_url": "https://huggingface.co/sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+      "memory_mb": 449,
+      "params_b": 0.118,
+      "embedding_dim": 384,
+      "max_tokens": 512,
+      "mean_task": 13.31
+    },
+    {
+      "rank": 108,
+      "model_name": "granite-embedding-125m-english",
+      "model_url": "https://huggingface.co/ibm-granite/granite-embedding-125m-english",
+      "memory_mb": 238,
+      "params_b": 0.125,
+      "embedding_dim": 768,
+      "max_tokens": 512,
+      "mean_task": 13.28
+    },
+    {
+      "rank": 109,
+      "model_name": "potion-base-4M",
+      "model_url": "https://huggingface.co/minishlab/potion-base-4M",
+      "memory_mb": 14,
+      "params_b": 0.004,
+      "embedding_dim": 128,
+      "max_tokens": null,
+      "mean_task": 13.1
+    },
+    {
+      "rank": 110,
+      "model_name": "LaBSE-en-ru",
+      "model_url": "https://huggingface.co/cointegrated/LaBSE-en-ru",
+      "memory_mb": 492,
+      "params_b": 0.129,
+      "embedding_dim": 768,
+      "max_tokens": 512,
+      "mean_task": 12.78
+    },
+    {
+      "rank": 111,
+      "model_name": "mmlw-e5-base",
+      "model_url": "https://huggingface.co/sdadas/mmlw-e5-base",
+      "memory_mb": 1061,
+      "params_b": 0.278,
+      "embedding_dim": 768,
+      "max_tokens": 514,
+      "mean_task": 12.65
+    },
+    {
+      "rank": 112,
+      "model_name": "snowflake-arctic-embed-m-v1.5",
+      "model_url": "https://huggingface.co/Snowflake/snowflake-arctic-embed-m-v1.5",
+      "memory_mb": 415,
+      "params_b": 0.109,
+      "embedding_dim": 768,
+      "max_tokens": 512,
+      "mean_task": 12.59
+    },
+    {
+      "rank": 113,
+      "model_name": "gte-micro-v4",
+      "model_url": "https://huggingface.co/Mihaiii/gte-micro-v4",
+      "memory_mb": 73,
+      "params_b": 0.019,
+      "embedding_dim": 384,
+      "max_tokens": 512,
+      "mean_task": 12.21
+    },
+    {
+      "rank": 114,
+      "model_name": "Bulbasaur",
+      "model_url": "https://huggingface.co/Mihaiii/Bulbasaur",
+      "memory_mb": 66,
+      "params_b": 0.017,
+      "embedding_dim": 384,
+      "max_tokens": 512,
+      "mean_task": 12.16
+    },
+    {
+      "rank": 115,
+      "model_name": "LaBSE-ru-turbo",
+      "model_url": "https://huggingface.co/sergeyzh/LaBSE-ru-turbo",
+      "memory_mb": 490,
+      "params_b": 0.129,
+      "embedding_dim": 768,
+      "max_tokens": 512,
+      "mean_task": 11.82
+    },
+    {
+      "rank": 116,
+      "model_name": "slx-v0.1",
+      "model_url": "https://huggingface.co/brahmairesearch/slx-v0.1",
+      "memory_mb": 87,
+      "params_b": 0.023,
+      "embedding_dim": 384,
+      "max_tokens": 512,
+      "mean_task": 11.81
+    },
+    {
+      "rank": 116,
+      "model_name": "all-MiniLM-L6-v2",
+      "model_url": "https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2",
+      "memory_mb": 87,
+      "params_b": 0.023,
+      "embedding_dim": 384,
+      "max_tokens": 256,
+      "mean_task": 11.81
+    },
+    {
+      "rank": 118,
+      "model_name": "NoInstruct-small-Embedding-v0",
+      "model_url": "https://huggingface.co/avsolatorio/NoInstruct-small-Embedding-v0",
+      "memory_mb": 127,
+      "params_b": 0.033,
+      "embedding_dim": 384,
+      "max_tokens": 512,
+      "mean_task": 11.79
+    },
+    {
+      "rank": 119,
+      "model_name": "bge-small-en-v1.5",
+      "model_url": "https://huggingface.co/BAAI/bge-small-en-v1.5",
+      "memory_mb": 127,
+      "params_b": 0.033,
+      "embedding_dim": 512,
+      "max_tokens": 512,
+      "mean_task": 11.74
+    },
+    {
+      "rank": 120,
+      "model_name": "text2vec-base-multilingual",
+      "model_url": "https://huggingface.co/shibing624/text2vec-base-chinese-paraphrase",
+      "memory_mb": 449,
+      "params_b": 0.118,
+      "embedding_dim": 384,
+      "max_tokens": 256,
+      "mean_task": 11.71
+    },
+    {
+      "rank": 121,
+      "model_name": "M2V_multilingual_output",
+      "model_url": "https://huggingface.co/minishlab/M2V_multilingual_output",
+      "memory_mb": 489,
+      "params_b": 0.128,
+      "embedding_dim": 256,
+      "max_tokens": null,
+      "mean_task": 11.24
+    },
+    {
+      "rank": 122,
+      "model_name": "GIST-small-Embedding-v0",
+      "model_url": "https://huggingface.co/avsolatorio/GIST-small-Embedding-v0",
+      "memory_mb": 127,
+      "params_b": 0.033,
+      "embedding_dim": 384,
+      "max_tokens": 512,
+      "mean_task": 10.78
+    },
+    {
+      "rank": 123,
+      "model_name": "granite-embedding-30m-english",
+      "model_url": "https://huggingface.co/ibm-granite/granite-embedding-30m-english",
+      "memory_mb": 58,
+      "params_b": 0.03,
+      "embedding_dim": 384,
+      "max_tokens": 512,
+      "mean_task": 10.76
+    },
+    {
+      "rank": 124,
+      "model_name": "MedEmbed-small-v0.1",
+      "model_url": "https://huggingface.co/abhinand/MedEmbed-small-v0.1",
+      "memory_mb": 127,
+      "params_b": 0.033,
+      "embedding_dim": 384,
+      "max_tokens": 512,
+      "mean_task": 10.73
+    },
+    {
+      "rank": 125,
+      "model_name": "all-mpnet-base-v2",
+      "model_url": "https://huggingface.co/sentence-transformers/all-mpnet-base-v2",
+      "memory_mb": 418,
+      "params_b": 0.109,
+      "embedding_dim": 768,
+      "max_tokens": 384,
+      "mean_task": 10.67
+    },
+    {
+      "rank": 126,
+      "model_name": "potion-base-2M",
+      "model_url": "https://huggingface.co/minishlab/potion-base-2M",
+      "memory_mb": 7,
+      "params_b": 0.002,
+      "embedding_dim": 64,
+      "max_tokens": null,
+      "mean_task": 10.15
+    },
+    {
+      "rank": 127,
+      "model_name": "mmlw-roberta-base",
+      "model_url": "https://huggingface.co/sdadas/mmlw-roberta-base",
+      "memory_mb": 475,
+      "params_b": 0.124,
+      "embedding_dim": 768,
+      "max_tokens": 514,
+      "mean_task": 10.11
+    },
+    {
+      "rank": 128,
+      "model_name": "snowflake-arctic-embed-xs",
+      "model_url": "https://huggingface.co/Snowflake/snowflake-arctic-embed-xs",
+      "memory_mb": 86,
+      "params_b": 0.023,
+      "embedding_dim": 384,
+      "max_tokens": 512,
+      "mean_task": 9.72
+    },
+    {
+      "rank": 129,
+      "model_name": "mmlw-e5-small",
+      "model_url": "https://huggingface.co/sdadas/mmlw-e5-small",
+      "memory_mb": 449,
+      "params_b": 0.118,
+      "embedding_dim": 384,
+      "max_tokens": 512,
+      "mean_task": 9.18
+    },
+    {
+      "rank": 130,
+      "model_name": "snowflake-arctic-embed-m-long",
+      "model_url": "https://huggingface.co/Snowflake/snowflake-arctic-embed-m-long",
+      "memory_mb": 522,
+      "params_b": 0.137,
+      "embedding_dim": 768,
+      "max_tokens": 2048,
+      "mean_task": 9.13
+    },
+    {
+      "rank": 131,
+      "model_name": "nomic-embed-text-v1.5",
+      "model_url": "https://huggingface.co/nomic-ai/nomic-embed-text-v1.5",
+      "memory_mb": 522,
+      "params_b": 0.137,
+      "embedding_dim": 768,
+      "max_tokens": 8192,
+      "mean_task": 9.01
+    },
+    {
+      "rank": 132,
+      "model_name": "bge-base-zh-v1.5",
+      "model_url": "https://huggingface.co/BAAI/bge-base-zh-v1.5",
+      "memory_mb": 416,
+      "params_b": 0.109,
+      "embedding_dim": 768,
+      "max_tokens": 512,
+      "mean_task": 8.79
+    },
+    {
+      "rank": 133,
+      "model_name": "gemma-2b-embeddings",
+      "model_url": "https://huggingface.co/Jaume/gemma-2b-embeddings",
+      "memory_mb": 9560,
+      "params_b": 2.506,
+      "embedding_dim": 2048,
+      "max_tokens": 8192,
+      "mean_task": 8.39
+    },
+    {
+      "rank": 134,
+      "model_name": "gte-micro",
+      "model_url": "https://huggingface.co/Mihaiii/gte-micro",
+      "memory_mb": 66,
+      "params_b": 0.017,
+      "embedding_dim": 384,
+      "max_tokens": 512,
+      "mean_task": 8.21
+    },
+    {
+      "rank": 135,
+      "model_name": "sgpt-bloom-7b1-msmarco",
+      "model_url": "https://huggingface.co/bigscience/sgpt-bloom-7b1-msmarco",
+      "memory_mb": null,
+      "params_b": 7.068,
+      "embedding_dim": 4096,
+      "max_tokens": null,
+      "mean_task": 8.15
+    },
+    {
+      "rank": 136,
+      "model_name": "Arabic-mpnet-base-all-nli-triplet",
+      "model_url": "https://huggingface.co/Omartificial-Intelligence-Space/Arabic-mpnet-base-all-nli-triplet",
+      "memory_mb": 418,
+      "params_b": 0.109,
+      "embedding_dim": 768,
+      "max_tokens": 514,
+      "mean_task": 7.91
+    },
+    {
+      "rank": 137,
+      "model_name": "all-MiniLM-L12-v2",
+      "model_url": "https://huggingface.co/sentence-transformers/all-MiniLM-L12-v2",
+      "memory_mb": 127,
+      "params_b": 0.033,
+      "embedding_dim": 384,
+      "max_tokens": 256,
+      "mean_task": 7.44
+    },
+    {
+      "rank": 138,
+      "model_name": "ru-en-RoSBERTa",
+      "model_url": "https://huggingface.co/ai-forever/ru-en-RoSBERTa",
+      "memory_mb": 1540,
+      "params_b": 0.404,
+      "embedding_dim": 1024,
+      "max_tokens": 512,
+      "mean_task": 7.01
+    },
+    {
+      "rank": 139,
+      "model_name": "bge-small-zh-v1.5",
+      "model_url": "https://huggingface.co/BAAI/bge-small-zh-v1.5",
+      "memory_mb": 91,
+      "params_b": 0.033,
+      "embedding_dim": 512,
+      "max_tokens": 512,
+      "mean_task": 6.86
+    },
+    {
+      "rank": 140,
+      "model_name": "bge-large-zh-v1.5",
+      "model_url": "https://huggingface.co/BAAI/bge-large-zh-v1.5",
+      "memory_mb": 1278,
+      "params_b": 0.335,
+      "embedding_dim": 1024,
+      "max_tokens": 512,
+      "mean_task": 6.84
+    },
+    {
+      "rank": 141,
+      "model_name": "cai-lunaris-text-embeddings",
+      "model_url": "https://huggingface.co/consciousAI/cai-lunaris-text-embeddings",
+      "memory_mb": null,
+      "params_b": 0.335,
+      "embedding_dim": 1024,
+      "max_tokens": 512,
+      "mean_task": 6.34
+    },
+    {
+      "rank": 142,
+      "model_name": "rubert-tiny",
+      "model_url": "https://huggingface.co/cointegrated/rubert-tiny",
+      "memory_mb": 45,
+      "params_b": 0.012,
+      "embedding_dim": 312,
+      "max_tokens": 512,
+      "mean_task": 5.11
+    },
+    {
+      "rank": 143,
+      "model_name": "Arabert-all-nli-triplet-Matryoshka",
+      "model_url": "https://huggingface.co/Omartificial-Intelligence-Space/Arabert-all-nli-triplet-Matryoshka",
+      "memory_mb": 516,
+      "params_b": 0.135,
+      "embedding_dim": 768,
+      "max_tokens": 512,
+      "mean_task": 4.67
+    },
+    {
+      "rank": 144,
+      "model_name": "silma-embeddding-matryoshka-v0.1",
+      "model_url": "https://huggingface.co/silma-ai/silma-embeddding-matryoshka-v0.1",
+      "memory_mb": 516,
+      "params_b": 0.135,
+      "embedding_dim": 768,
+      "max_tokens": 512,
+      "mean_task": 4.4
+    },
+    {
+      "rank": 145,
+      "model_name": "M2V_base_glove",
+      "model_url": "https://huggingface.co/minishlab/M2V_base_glove",
+      "memory_mb": 391,
+      "params_b": 0.102,
+      "embedding_dim": 256,
+      "max_tokens": null,
+      "mean_task": 4.16
+    },
+    {
+      "rank": 146,
+      "model_name": "rubert-tiny2",
+      "model_url": "https://huggingface.co/cointegrated/rubert-tiny2",
+      "memory_mb": 112,
+      "params_b": 0.029,
+      "embedding_dim": 312,
+      "max_tokens": 2048,
+      "mean_task": 4.11
+    },
+    {
+      "rank": 147,
+      "model_name": "distilrubert-small-cased-conversational",
+      "model_url": "https://huggingface.co/DeepPavlov/distilrubert-small-cased-conversational",
+      "memory_mb": 408,
+      "params_b": 0.107,
+      "embedding_dim": 768,
+      "max_tokens": 512,
+      "mean_task": 3.71
+    },
+    {
+      "rank": 148,
+      "model_name": "rubert-base-cased",
+      "model_url": "https://huggingface.co/DeepPavlov/rubert-base-cased",
+      "memory_mb": 4883,
+      "params_b": 1.28,
+      "embedding_dim": 768,
+      "max_tokens": 512,
+      "mean_task": 3.65
+    },
+    {
+      "rank": 149,
+      "model_name": "ternary-weight-embedding",
+      "model_url": "https://huggingface.co/malenia1/ternary-weight-embedding",
+      "memory_mb": 158,
+      "params_b": 0.099,
+      "embedding_dim": 1024,
+      "max_tokens": 512,
+      "mean_task": 3.61
+    },
+    {
+      "rank": 150,
+      "model_name": "USER-base",
+      "model_url": "https://huggingface.co/deepvk/USER-base",
+      "memory_mb": 473,
+      "params_b": 0.427,
+      "embedding_dim": 768,
+      "max_tokens": 512,
+      "mean_task": 3.56
+    },
+    {
+      "rank": 151,
+      "model_name": "rubert-tiny-turbo",
+      "model_url": "https://huggingface.co/sergeyzh/rubert-tiny-turbo",
+      "memory_mb": 111,
+      "params_b": 0.029,
+      "embedding_dim": 312,
+      "max_tokens": 2048,
+      "mean_task": 3.1
+    },
+    {
+      "rank": 152,
+      "model_name": "sbert_large_nlu_ru",
+      "model_url": "https://huggingface.co/ai-forever/sbert_large_nlu_ru",
+      "memory_mb": 1629,
+      "params_b": 0.427,
+      "embedding_dim": 1024,
+      "max_tokens": 512,
+      "mean_task": 3.1
+    },
+    {
+      "rank": 153,
+      "model_name": "Marbert-all-nli-triplet-Matryoshka",
+      "model_url": "https://huggingface.co/Omartificial-Intelligence-Space/Marbert-all-nli-triplet-Matryoshka",
+      "memory_mb": 621,
+      "params_b": 0.163,
+      "embedding_dim": 768,
+      "max_tokens": 512,
+      "mean_task": 3.08
+    },
+    {
+      "rank": 154,
+      "model_name": "text2vec-base-chinese",
+      "model_url": "https://huggingface.co/shibing624/text2vec-base-chinese",
+      "memory_mb": 390,
+      "params_b": 0.102,
+      "embedding_dim": 768,
+      "max_tokens": 512,
+      "mean_task": 3.01
+    },
+    {
+      "rank": 155,
+      "model_name": "rubert-base-cased-sentence",
+      "model_url": "https://huggingface.co/DeepPavlov/rubert-base-cased-sentence",
+      "memory_mb": 408,
+      "params_b": 0.107,
+      "embedding_dim": 768,
+      "max_tokens": 512,
+      "mean_task": 2.94
+    },
+    {
+      "rank": 156,
+      "model_name": "jina-embeddings-v2-small-en",
+      "model_url": "https://huggingface.co/jinaai/jina-embeddings-v2-small-en",
+      "memory_mb": 62,
+      "params_b": 0.033,
+      "embedding_dim": 512,
+      "max_tokens": 8192,
+      "mean_task": 2.89
+    },
+    {
+      "rank": 157,
+      "model_name": "sbert_large_mt_nlu_ru",
+      "model_url": "https://huggingface.co/ai-forever/sbert_large_mt_nlu_ru",
+      "memory_mb": 1629,
+      "params_b": 0.427,
+      "embedding_dim": 1024,
+      "max_tokens": 512,
+      "mean_task": 2.6
+    },
+    {
+      "rank": 158,
+      "model_name": "jina-embeddings-v2-base-en",
+      "model_url": "https://huggingface.co/jinaai/jina-embeddings-v2-base-en",
+      "memory_mb": 262,
+      "params_b": 0.137,
+      "embedding_dim": 768,
+      "max_tokens": 8192,
+      "mean_task": 2.6
+    },
+    {
+      "rank": 159,
+      "model_name": "random-encoder-baseline",
+      "model_url": null,
+      "memory_mb": null,
+      "params_b": null,
+      "embedding_dim": 32,
+      "max_tokens": null,
+      "mean_task": 2.53
+    },
+    {
+      "rank": 160,
+      "model_name": "deberta-v1-base",
+      "model_url": "https://huggingface.co/deepvk/deberta-v1-base",
+      "memory_mb": 473,
+      "params_b": 0.124,
+      "embedding_dim": 768,
+      "max_tokens": 512,
+      "mean_task": 2.11
+    },
+    {
+      "rank": 161,
+      "model_name": "Qwen3-Embedding-0.6B",
+      "model_url": "https://huggingface.co/Qwen/Qwen3-Embedding-0.6B",
+      "memory_mb": 1136,
+      "params_b": 0.596,
+      "embedding_dim": 1024,
+      "max_tokens": 32768,
+      "mean_task": null
+    },
+    {
+      "rank": 161,
+      "model_name": "Qwen3-Embedding-4B",
+      "model_url": "https://huggingface.co/Qwen/Qwen3-Embedding-4B",
+      "memory_mb": 7671,
+      "params_b": 4.022,
+      "embedding_dim": 2560,
+      "max_tokens": 32768,
+      "mean_task": null
+    }
+  ],
+  "columns": [
+    "Rank (Borda)",
+    "Model",
+    "Memory Usage (MB)",
+    "Number of Parameters (B)",
+    "Embedding Dimensions",
+    "Max Tokens",
+    "Mean (Task)"
+  ]
+}

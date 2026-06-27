@@ -1,0 +1,87 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import thesis from '../lib/data/thesis_mteb_snapshot.json';
+
+const base = import.meta.env.BASE_URL;
+const capturedAt = thesis.captured_at;
+const builtAt = thesis.built_at;
+const rows = thesis.rows;
+---
+
+<BaseLayout title="Thesis MTEB snapshot (2026-02-16)" generatedAtIso={thesis.captured_at + 'T00:00:00Z'}>
+  <section>
+    <div class="wrap">
+      <div class="card section-band">
+        <div class="sec-head">
+          <h2>Thesis citation snapshot</h2>
+        </div>
+        <p class="snapshot-notice" role="status">
+          Frozen MTEB ranking export captured <strong>{capturedAt}</strong> for diploma thesis citation.
+          This is not live leaderboard data. JSON built at {builtAt}.
+        </p>
+        <p class="mono snapshot-meta">
+          Source: {thesis.source_file} · {thesis.row_count} models
+        </p>
+        <div class="table-scroll">
+          <table class="data thesis-table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Model</th>
+                <th>Mean</th>
+                <th>Dim</th>
+                <th>Params (B)</th>
+                <th>Max tokens</th>
+              </tr>
+            </thead>
+            <tbody>
+              {rows.map((row) => (
+                <tr>
+                  <td>{row.rank}</td>
+                  <td class="model-cell">
+                    {row.model_url ? (
+                      <a href={row.model_url} target="_blank" rel="noopener" class="mono">{row.model_name}</a>
+                    ) : (
+                      <span class="mono">{row.model_name}</span>
+                    )}
+                  </td>
+                  <td><strong>{row.mean_task != null ? row.mean_task.toFixed(2) : '—'}</strong></td>
+                  <td>{row.embedding_dim ?? '—'}</td>
+                  <td>{row.params_b ?? '—'}</td>
+                  <td>{row.max_tokens ?? '—'}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p style="margin-top:12px">
+          <a class="btn" href={base}>Back to live dashboard</a>
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .snapshot-notice {
+    font-size: 0.92rem;
+    padding: 10px 12px;
+    border-radius: 8px;
+    background: rgba(229, 168, 50, 0.12);
+    border: 1px solid rgba(229, 168, 50, 0.35);
+    margin-bottom: 8px;
+  }
+  .snapshot-meta {
+    font-size: 0.72rem;
+    color: var(--muted);
+    margin-bottom: 12px;
+  }
+  .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .thesis-table .model-cell .mono { font-size: 0.78rem; }
+  @media (max-width: 768px) {
+    .thesis-table th:nth-child(5),
+    .thesis-table td:nth-child(5),
+    .thesis-table th:nth-child(6),
+    .thesis-table td:nth-child(6) { display: none; }
+  }
+</style>

@@ -4,7 +4,7 @@
   "version": "2.0.0",
   "private": true,
   "scripts": {
-    "prebuild": "node scripts/copy_data.mjs",
+    "prebuild": "node scripts/copy_data.mjs && node scripts/build_thesis_snapshot.mjs",
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
