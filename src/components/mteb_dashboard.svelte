@@ -95,7 +95,10 @@
     const selected = compareModels();
     const task = filter.task;
     const labels = selected.map((m) => m.model_id.split('/').pop() ?? m.model_id);
-    const data = selected.map((m) => m.tasks[task] ?? 0);
+    const data = selected.map((m) => {
+      const v = m.tasks[task];
+      return v != null ? v : null;
+    });
     chartInstance = new Chart(chartCanvas.getContext('2d')!, {
       type: 'bar',
       data: {
@@ -111,7 +114,18 @@
       options: {
         responsive: true,
         maintainAspectRatio: false,
-        plugins: { legend: { display: false } },
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            callbacks: {
+              label: (ctx) => {
+                const raw = ctx.raw;
+                if (raw == null) return `${task}: n/a`;
+                return `${task}: ${Number(raw).toFixed(1)}`;
+              },
+            },
+          },
+        },
         scales: { y: { beginAtZero: true } },
       },
     });
