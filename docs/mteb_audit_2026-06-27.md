@@ -1,6 +1,25 @@
-# MTEB DE Dashboard Audit — 2026-06-27
+---
+title: MTEB DE Dashboard Audit — 2026-06-27
+description: Audit of MTEB fetch pipeline migration to MTEB(deu,v1), OpenRouter embedding gap, fail-safe semantics, and speckit task completion status.
+dates:
+  - created: 2026-06-27
+  - updated: 2026-06-27
+version: 1.0.0
+status: reference
+author:
+  - name: Jan Ritt
+    email: janritt.office@gmail.com
+    location: Österreich
+    github:
+      handle: IxI-Enki
+      userpage: 'https://github.com/IxI-Enki'
+tags: [ mteb, audit, data-pipeline, embeddings, github-actions ]
+repo: IxI-Enki/project-diploma-performance-analysis
+relates_to:
+  - ../README.md
+---
 
-Satellite repo: `24_project_diploma_performance_analysis`  
+Satellite repo: `24_project_diploma_performance_analysis`
 Planning hub: `_IxI-Enki/.specify/specs/mteb-de-dashboard/`
 
 ## Executive summary
@@ -71,6 +90,7 @@ python scripts/validate_json.py
 pytest tests/test_fetch_mteb_de.py
 npm run test:unit
 npm run build
+
 ```
 
 Live site after deploy: debug panel should show **ok** for MTEB(deu, v1) API, **warn** for OpenRouter pricing.
