@@ -1,6 +1,6 @@
 {
   "schema_version": "2.0.0",
-  "generated_at": "2026-07-30T04:59:12+00:00",
+  "generated_at": "2026-07-31T05:36:29+00:00",
   "source": "mteb/deu-v1-api",
   "source_url": "https://mteb-leaderboard-backend.hf.space/v1/benchmarks/MTEB(deu,%20v1)/scores",
   "benchmark": "MTEB(deu, v1)",
@@ -210,6 +210,23 @@
       "price_source": "unknown"
     },
     {
+      "model_id": "mixedbread-ai/deepset-mxbai-embed-de-large-v1",
+      "avg_score": 56.0,
+      "params_m": 0.487,
+      "license": "apache-2.0",
+      "updated": "2024-07-12",
+      "is_open": true,
+      "tasks": {
+        "retrieval": 52.23,
+        "clustering": 34.92,
+        "classification": 61.46,
+        "sts": 73.69
+      },
+      "embedding_dim": 1024,
+      "dim_source": "mteb_api",
+      "price_source": "unknown"
+    },
+    {
       "model_id": "Salesforce/SFR-Embedding-Mistral",
       "avg_score": 57.32,
       "params_m": 7.111,
@@ -326,23 +343,6 @@
         "sts": 63.78
       },
       "embedding_dim": 4096,
-      "dim_source": "mteb_api",
-      "price_source": "unknown"
-    },
-    {
-      "model_id": "Lajavaness/bilingual-embedding-base",
-      "avg_score": 53.33,
-      "params_m": 0.278,
-      "license": "apache-2.0",
-      "updated": "2024-06-26",
-      "is_open": true,
-      "tasks": {
-        "retrieval": 47.3,
-        "clustering": 34.08,
-        "classification": 59.8,
-        "sts": 71.73
-      },
-      "embedding_dim": 768,
       "dim_source": "mteb_api",
       "price_source": "unknown"
     }
