@@ -1,6 +1,6 @@
 {
   "schema_version": "2.0.0",
-  "generated_at": "2026-08-02T05:27:39+00:00",
+  "generated_at": "2026-08-03T05:42:44+00:00",
   "source": "mteb/deu-v1-api",
   "source_url": "https://mteb-leaderboard-backend.hf.space/v1/benchmarks/MTEB(deu,%20v1)/scores",
   "benchmark": "MTEB(deu, v1)",
@@ -8,7 +8,7 @@
     {
       "model_id": "codefuse-ai/F2LLM-v2-14B",
       "avg_score": 63.41,
-      "params_m": 13.99,
+      "params_m": 13.214,
       "license": "apache-2.0",
       "updated": "2026-03-09",
       "is_open": true,
@@ -25,7 +25,7 @@
     {
       "model_id": "codefuse-ai/F2LLM-v2-8B",
       "avg_score": 63.18,
-      "params_m": 7.568,
+      "params_m": 6.947,
       "license": "apache-2.0",
       "updated": "2026-03-09",
       "is_open": true,
@@ -42,7 +42,7 @@
     {
       "model_id": "codefuse-ai/F2LLM-v2-4B",
       "avg_score": 62.5,
-      "params_m": 4.022,
+      "params_m": 3.634,
       "license": "apache-2.0",
       "updated": "2026-03-09",
       "is_open": true,
@@ -59,7 +59,7 @@
     {
       "model_id": "codefuse-ai/F2LLM-v2-1.7B",
       "avg_score": 61.79,
-      "params_m": 1.721,
+      "params_m": 1.41,
       "license": "apache-2.0",
       "updated": "2026-03-09",
       "is_open": true,
@@ -76,7 +76,7 @@
     {
       "model_id": "codefuse-ai/F2LLM-v2-0.6B",
       "avg_score": 59.8,
-      "params_m": 0.596,
+      "params_m": 0.441,
       "license": "apache-2.0",
       "updated": "2026-03-09",
       "is_open": true,
@@ -93,7 +93,7 @@
     {
       "model_id": "jinaai/jina-embeddings-v3",
       "avg_score": 56.32,
-      "params_m": 0.572,
+      "params_m": 0.316,
       "license": "cc-by-nc-4.0",
       "updated": "2024-09-18",
       "is_open": true,
@@ -110,7 +110,7 @@
     {
       "model_id": "codefuse-ai/F2LLM-v2-330M",
       "avg_score": 58.33,
-      "params_m": 0.334,
+      "params_m": 0.198,
       "license": "apache-2.0",
       "updated": "2026-03-09",
       "is_open": true,
@@ -127,7 +127,7 @@
     {
       "model_id": "intfloat/e5-mistral-7b-instruct",
       "avg_score": 56.9,
-      "params_m": 7.111,
+      "params_m": 6.98,
       "license": "mit",
       "updated": "2024-02-08",
       "is_open": true,
@@ -144,7 +144,7 @@
     {
       "model_id": "Alibaba-NLP/gte-Qwen2-7B-instruct",
       "avg_score": 58.69,
-      "params_m": 7.069,
+      "params_m": 6.526,
       "license": "apache-2.0",
       "updated": "2024-06-15",
       "is_open": true,
@@ -161,7 +161,7 @@
     {
       "model_id": "Linq-AI-Research/Linq-Embed-Mistral",
       "avg_score": 58.45,
-      "params_m": 7.111,
+      "params_m": 6.98,
       "license": "cc-by-nc-4.0",
       "updated": "2024-05-29",
       "is_open": true,
@@ -178,7 +178,7 @@
     {
       "model_id": "Lajavaness/bilingual-embedding-large",
       "avg_score": 55.29,
-      "params_m": 0.56,
+      "params_m": 0.304,
       "license": "apache-2.0",
       "updated": "2024-06-24",
       "is_open": true,
@@ -195,7 +195,7 @@
     {
       "model_id": "intfloat/multilingual-e5-large-instruct",
       "avg_score": 55.84,
-      "params_m": 0.56,
+      "params_m": 0.304,
       "license": "mit",
       "updated": "2024-02-08",
       "is_open": true,
@@ -212,7 +212,7 @@
     {
       "model_id": "mixedbread-ai/deepset-mxbai-embed-de-large-v1",
       "avg_score": 56.0,
-      "params_m": 0.487,
+      "params_m": 0.304,
       "license": "apache-2.0",
       "updated": "2024-07-12",
       "is_open": true,
@@ -229,7 +229,7 @@
     {
       "model_id": "Salesforce/SFR-Embedding-Mistral",
       "avg_score": 57.32,
-      "params_m": 7.111,
+      "params_m": 6.98,
       "license": "cc-by-nc-4.0",
       "updated": "2024-01-24",
       "is_open": true,
@@ -246,7 +246,7 @@
     {
       "model_id": "Alibaba-NLP/gte-Qwen2-1.5B-instruct",
       "avg_score": 56.72,
-      "params_m": 1.543,
+      "params_m": 1.31,
       "license": "apache-2.0",
       "updated": "2024-07-29",
       "is_open": true,
@@ -263,7 +263,7 @@
     {
       "model_id": "intfloat/multilingual-e5-large",
       "avg_score": 55.04,
-      "params_m": 0.56,
+      "params_m": 0.304,
       "license": "mit",
       "updated": "2024-02-08",
       "is_open": true,
@@ -280,7 +280,7 @@
     {
       "model_id": "Alibaba-NLP/gte-Qwen1.5-7B-instruct",
       "avg_score": 56.43,
-      "params_m": 7.099,
+      "params_m": 6.477,
       "license": "apache-2.0",
       "updated": "2024-04-20",
       "is_open": true,
@@ -297,7 +297,7 @@
     {
       "model_id": "Snowflake/snowflake-arctic-embed-l-v2.0",
       "avg_score": 55.68,
-      "params_m": 0.568,
+      "params_m": 0.312,
       "license": "apache-2.0",
       "updated": "2024-12-04",
       "is_open": true,
@@ -315,7 +315,7 @@
     {
       "model_id": "OrdalieTech/Solon-embeddings-large-0.1",
       "avg_score": 54.67,
-      "params_m": 0.56,
+      "params_m": 0.304,
       "license": "mit",
       "updated": "2023-12-09",
       "is_open": true,
@@ -332,7 +332,7 @@
     {
       "model_id": "Salesforce/SFR-Embedding-2_R",
       "avg_score": 55.74,
-      "params_m": 7.111,
+      "params_m": 6.98,
       "license": "cc-by-nc-4.0",
       "updated": "2024-06-14",
       "is_open": true,

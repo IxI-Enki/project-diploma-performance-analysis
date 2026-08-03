@@ -1,6 +1,6 @@
 {
   "schema_version": "2.0.0",
-  "generated_at": "2026-08-02T05:27:39+00:00",
+  "generated_at": "2026-08-03T05:42:44+00:00",
   "sources": [
     "mteb/deu-v1-api"
   ],
@@ -11,6 +11,10 @@
     "mteb_de_leaderboard.json"
   ],
   "changelog": [
+    {
+      "generated_at": "2026-08-03T05:42:44+00:00",
+      "source": "mteb/deu-v1-api"
+    },
     {
       "generated_at": "2026-08-02T05:27:39+00:00",
       "source": "mteb/deu-v1-api"
@@ -25,10 +29,6 @@
     },
     {
       "generated_at": "2026-07-30T04:59:12+00:00",
-      "source": "mteb/deu-v1-api"
-    },
-    {
-      "generated_at": "2026-07-29T05:22:10+00:00",
       "source": "mteb/deu-v1-api"
     }
   ]
