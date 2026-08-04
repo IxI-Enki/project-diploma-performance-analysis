@@ -1,6 +1,6 @@
 {
   "schema_version": "2.0.0",
-  "generated_at": "2026-08-03T05:42:44+00:00",
+  "generated_at": "2026-08-04T05:15:40+00:00",
   "source": "mteb/deu-v1-api",
   "source_url": "https://mteb-leaderboard-backend.hf.space/v1/benchmarks/MTEB(deu,%20v1)/scores",
   "benchmark": "MTEB(deu, v1)",
@@ -278,23 +278,6 @@
       "price_source": "unknown"
     },
     {
-      "model_id": "Alibaba-NLP/gte-Qwen1.5-7B-instruct",
-      "avg_score": 56.43,
-      "params_m": 6.477,
-      "license": "apache-2.0",
-      "updated": "2024-04-20",
-      "is_open": true,
-      "tasks": {
-        "retrieval": 49.61,
-        "clustering": 39.57,
-        "classification": 68.42,
-        "sts": 68.13
-      },
-      "embedding_dim": 4096,
-      "dim_source": "mteb_api",
-      "price_source": "unknown"
-    },
-    {
       "model_id": "Snowflake/snowflake-arctic-embed-l-v2.0",
       "avg_score": 55.68,
       "params_m": 0.312,
@@ -311,6 +294,23 @@
       "dim_source": "mteb_api",
       "price_input_per_mtok": 0.07,
       "price_source": "litellm"
+    },
+    {
+      "model_id": "Alibaba-NLP/gte-Qwen1.5-7B-instruct",
+      "avg_score": 56.43,
+      "params_m": 6.477,
+      "license": "apache-2.0",
+      "updated": "2024-04-20",
+      "is_open": true,
+      "tasks": {
+        "retrieval": 49.61,
+        "clustering": 39.57,
+        "classification": 68.42,
+        "sts": 68.13
+      },
+      "embedding_dim": 4096,
+      "dim_source": "mteb_api",
+      "price_source": "unknown"
     },
     {
       "model_id": "OrdalieTech/Solon-embeddings-large-0.1",
