@@ -1,6 +1,6 @@
 {
   "schema_version": "2.0.0",
-  "generated_at": "2026-09-30T08:02:13+00:00",
+  "generated_at": "2026-10-01T08:21:29+00:00",
   "source": "mteb/deu-v1-api",
   "source_url": "https://mteb-leaderboard-backend.hf.space/v1/benchmarks/MTEB(deu,%20v1)/scores",
   "benchmark": "MTEB(deu, v1)",
@@ -57,6 +57,23 @@
       "price_source": "unknown"
     },
     {
+      "model_id": "jinaai/jina-embeddings-v5-text-nano",
+      "avg_score": 62.23,
+      "params_m": 0.113,
+      "license": "cc-by-nc-4.0",
+      "updated": "2026-02-17",
+      "is_open": true,
+      "tasks": {
+        "retrieval": 56.36,
+        "clustering": 41.0,
+        "classification": 70.81,
+        "sts": 78.08
+      },
+      "embedding_dim": 768,
+      "dim_source": "mteb_api",
+      "price_source": "unknown"
+    },
+    {
       "model_id": "codefuse-ai/F2LLM-v2-1.7B",
       "avg_score": 61.79,
       "params_m": 1.41,
@@ -108,23 +125,6 @@
       "price_source": "unknown"
     },
     {
-      "model_id": "codefuse-ai/F2LLM-v2-330M",
-      "avg_score": 58.33,
-      "params_m": 0.198,
-      "license": "apache-2.0",
-      "updated": "2026-03-09",
-      "is_open": true,
-      "tasks": {
-        "retrieval": 51.53,
-        "clustering": 36.63,
-        "classification": 69.58,
-        "sts": 71.11
-      },
-      "embedding_dim": 896,
-      "dim_source": "mteb_api",
-      "price_source": "unknown"
-    },
-    {
       "model_id": "intfloat/e5-mistral-7b-instruct",
       "avg_score": 56.9,
       "params_m": 6.98,
@@ -138,6 +138,23 @@
         "sts": 67.4
       },
       "embedding_dim": 4096,
+      "dim_source": "mteb_api",
+      "price_source": "unknown"
+    },
+    {
+      "model_id": "codefuse-ai/F2LLM-v2-330M",
+      "avg_score": 58.33,
+      "params_m": 0.198,
+      "license": "apache-2.0",
+      "updated": "2026-03-09",
+      "is_open": true,
+      "tasks": {
+        "retrieval": 51.53,
+        "clustering": 36.63,
+        "classification": 69.58,
+        "sts": 71.11
+      },
+      "embedding_dim": 896,
       "dim_source": "mteb_api",
       "price_source": "unknown"
     },
@@ -326,23 +343,6 @@
         "sts": 71.53
       },
       "embedding_dim": 1024,
-      "dim_source": "mteb_api",
-      "price_source": "unknown"
-    },
-    {
-      "model_id": "Salesforce/SFR-Embedding-2_R",
-      "avg_score": 55.74,
-      "params_m": 6.98,
-      "license": "cc-by-nc-4.0",
-      "updated": "2024-06-14",
-      "is_open": true,
-      "tasks": {
-        "retrieval": 53.4,
-        "clustering": 40.1,
-        "classification": 65.68,
-        "sts": 63.78
-      },
-      "embedding_dim": 4096,
       "dim_source": "mteb_api",
       "price_source": "unknown"
     }
