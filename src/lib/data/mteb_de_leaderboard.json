@@ -1,6 +1,6 @@
 {
   "schema_version": "2.0.0",
-  "generated_at": "2026-10-21T07:06:21+00:00",
+  "generated_at": "2026-10-22T07:08:37+00:00",
   "source": "mteb/deu-v1-api",
   "source_url": "https://mteb-leaderboard-backend.hf.space/v1/benchmarks/MTEB(deu,%20v1)/scores",
   "benchmark": "MTEB(deu, v1)",
@@ -91,6 +91,23 @@
       "price_source": "unknown"
     },
     {
+      "model_id": "Linq-AI-Research/Linq-Embed-Mistral",
+      "avg_score": 59.06,
+      "params_m": 6.98,
+      "license": "cc-by-nc-4.0",
+      "updated": "2024-05-29",
+      "is_open": true,
+      "tasks": {
+        "retrieval": 53.8,
+        "clustering": 40.72,
+        "classification": 67.47,
+        "sts": 71.11
+      },
+      "embedding_dim": 4096,
+      "dim_source": "mteb_api",
+      "price_source": "unknown"
+    },
+    {
       "model_id": "codefuse-ai/F2LLM-v2-0.6B",
       "avg_score": 59.8,
       "params_m": 0.441,
@@ -104,6 +121,40 @@
         "sts": 73.16
       },
       "embedding_dim": 1024,
+      "dim_source": "mteb_api",
+      "price_source": "unknown"
+    },
+    {
+      "model_id": "jinaai/jina-embeddings-v5-text-small",
+      "avg_score": 56.63,
+      "params_m": 0.44,
+      "license": "cc-by-nc-4.0",
+      "updated": "2026-02-17",
+      "is_open": true,
+      "tasks": {
+        "retrieval": 56.11,
+        "clustering": 41.29,
+        "classification": 72.48,
+        "sts": null
+      },
+      "embedding_dim": 1024,
+      "dim_source": "mteb_api",
+      "price_source": "unknown"
+    },
+    {
+      "model_id": "Salesforce/SFR-Embedding-Mistral",
+      "avg_score": 57.72,
+      "params_m": 6.98,
+      "license": "cc-by-nc-4.0",
+      "updated": "2024-01-24",
+      "is_open": true,
+      "tasks": {
+        "retrieval": 53.64,
+        "clustering": 41.16,
+        "classification": 64.15,
+        "sts": 69.58
+      },
+      "embedding_dim": 4096,
       "dim_source": "mteb_api",
       "price_source": "unknown"
     },
@@ -125,6 +176,23 @@
       "price_source": "unknown"
     },
     {
+      "model_id": "intfloat/e5-mistral-7b-instruct",
+      "avg_score": 56.9,
+      "params_m": 6.98,
+      "license": "mit",
+      "updated": "2024-02-08",
+      "is_open": true,
+      "tasks": {
+        "retrieval": 52.72,
+        "clustering": 40.89,
+        "classification": 63.84,
+        "sts": 67.4
+      },
+      "embedding_dim": 4096,
+      "dim_source": "mteb_api",
+      "price_source": "unknown"
+    },
+    {
       "model_id": "codefuse-ai/F2LLM-v2-330M",
       "avg_score": 58.33,
       "params_m": 0.198,
@@ -142,19 +210,19 @@
       "price_source": "unknown"
     },
     {
-      "model_id": "intfloat/e5-mistral-7b-instruct",
-      "avg_score": 56.9,
-      "params_m": 6.98,
-      "license": "mit",
-      "updated": "2024-02-08",
+      "model_id": "Alibaba-NLP/gte-Qwen2-1.5B-instruct",
+      "avg_score": 57.29,
+      "params_m": 1.31,
+      "license": "apache-2.0",
+      "updated": "2024-07-29",
       "is_open": true,
       "tasks": {
-        "retrieval": 52.72,
-        "clustering": 40.89,
-        "classification": 63.84,
-        "sts": 67.4
+        "retrieval": 51.73,
+        "clustering": 36.64,
+        "classification": 66.97,
+        "sts": 69.7
       },
-      "embedding_dim": 4096,
+      "embedding_dim": 8960,
       "dim_source": "mteb_api",
       "price_source": "unknown"
     },
@@ -176,17 +244,17 @@
       "price_source": "unknown"
     },
     {
-      "model_id": "Linq-AI-Research/Linq-Embed-Mistral",
-      "avg_score": 58.45,
+      "model_id": "Salesforce/SFR-Embedding-2_R",
+      "avg_score": 56.42,
       "params_m": 6.98,
       "license": "cc-by-nc-4.0",
-      "updated": "2024-05-29",
+      "updated": "2024-06-14",
       "is_open": true,
       "tasks": {
-        "retrieval": 54.51,
-        "clustering": 40.72,
-        "classification": 67.47,
-        "sts": 71.11
+        "retrieval": 51.65,
+        "clustering": 40.1,
+        "classification": 65.68,
+        "sts": 63.78
       },
       "embedding_dim": 4096,
       "dim_source": "mteb_api",
@@ -244,40 +312,6 @@
       "price_source": "unknown"
     },
     {
-      "model_id": "Salesforce/SFR-Embedding-Mistral",
-      "avg_score": 57.32,
-      "params_m": 6.98,
-      "license": "cc-by-nc-4.0",
-      "updated": "2024-01-24",
-      "is_open": true,
-      "tasks": {
-        "retrieval": 54.39,
-        "clustering": 41.16,
-        "classification": 64.15,
-        "sts": 69.58
-      },
-      "embedding_dim": 4096,
-      "dim_source": "mteb_api",
-      "price_source": "unknown"
-    },
-    {
-      "model_id": "Alibaba-NLP/gte-Qwen2-1.5B-instruct",
-      "avg_score": 56.72,
-      "params_m": 1.31,
-      "license": "apache-2.0",
-      "updated": "2024-07-29",
-      "is_open": true,
-      "tasks": {
-        "retrieval": 53.57,
-        "clustering": 36.64,
-        "classification": 66.97,
-        "sts": 69.7
-      },
-      "embedding_dim": 8960,
-      "dim_source": "mteb_api",
-      "price_source": "unknown"
-    },
-    {
       "model_id": "intfloat/multilingual-e5-large",
       "avg_score": 55.04,
       "params_m": 0.304,
@@ -311,40 +345,6 @@
       "dim_source": "mteb_api",
       "price_input_per_mtok": 0.07,
       "price_source": "litellm"
-    },
-    {
-      "model_id": "Alibaba-NLP/gte-Qwen1.5-7B-instruct",
-      "avg_score": 56.43,
-      "params_m": 6.477,
-      "license": "apache-2.0",
-      "updated": "2024-04-20",
-      "is_open": true,
-      "tasks": {
-        "retrieval": 49.61,
-        "clustering": 39.57,
-        "classification": 68.42,
-        "sts": 68.13
-      },
-      "embedding_dim": 4096,
-      "dim_source": "mteb_api",
-      "price_source": "unknown"
-    },
-    {
-      "model_id": "OrdalieTech/Solon-embeddings-large-0.1",
-      "avg_score": 54.67,
-      "params_m": 0.304,
-      "license": "mit",
-      "updated": "2023-12-09",
-      "is_open": true,
-      "tasks": {
-        "retrieval": 50.7,
-        "clustering": 33.19,
-        "classification": 60.95,
-        "sts": 71.53
-      },
-      "embedding_dim": 1024,
-      "dim_source": "mteb_api",
-      "price_source": "unknown"
     }
   ],
   "picker_rules": [
