@@ -1,6 +1,6 @@
 {
   "schema_version": "2.0.0",
-  "generated_at": "2026-11-10T09:18:26+00:00",
+  "generated_at": "2026-11-11T08:53:20+00:00",
   "source": "mteb/deu-v1-api",
   "source_url": "https://mteb-leaderboard-backend.hf.space/v1/benchmarks/MTEB(deu,%20v1)/scores",
   "benchmark": "MTEB(deu, v1)",
@@ -278,6 +278,24 @@
       "price_source": "unknown"
     },
     {
+      "model_id": "Qwen/Qwen3-Embedding-8B",
+      "avg_score": 61.88,
+      "params_m": 6.946,
+      "license": "apache-2.0",
+      "updated": "2025-06-05",
+      "is_open": true,
+      "tasks": {
+        "retrieval": 59.86,
+        "clustering": 43.42,
+        "classification": 64.68,
+        "sts": 79.55
+      },
+      "embedding_dim": 4096,
+      "dim_source": "mteb_api",
+      "price_input_per_mtok": 0.01,
+      "price_source": "litellm"
+    },
+    {
       "model_id": "Lajavaness/bilingual-embedding-large",
       "avg_score": 55.29,
       "params_m": 0.304,
@@ -295,6 +313,23 @@
       "price_source": "unknown"
     },
     {
+      "model_id": "Qwen/Qwen3-Embedding-4B",
+      "avg_score": 60.67,
+      "params_m": 3.634,
+      "license": "apache-2.0",
+      "updated": "2025-06-05",
+      "is_open": true,
+      "tasks": {
+        "retrieval": 58.71,
+        "clustering": 43.11,
+        "classification": 61.81,
+        "sts": 79.04
+      },
+      "embedding_dim": 2560,
+      "dim_source": "mteb_api",
+      "price_source": "unknown"
+    },
+    {
       "model_id": "intfloat/multilingual-e5-large-instruct",
       "avg_score": 55.84,
       "params_m": 0.304,
@@ -308,40 +343,6 @@
         "sts": 73.72
       },
       "embedding_dim": 1024,
-      "dim_source": "mteb_api",
-      "price_source": "unknown"
-    },
-    {
-      "model_id": "mixedbread-ai/deepset-mxbai-embed-de-large-v1",
-      "avg_score": 56.0,
-      "params_m": 0.304,
-      "license": "apache-2.0",
-      "updated": "2024-07-12",
-      "is_open": true,
-      "tasks": {
-        "retrieval": 52.23,
-        "clustering": 34.92,
-        "classification": 61.46,
-        "sts": 73.69
-      },
-      "embedding_dim": 1024,
-      "dim_source": "mteb_api",
-      "price_source": "unknown"
-    },
-    {
-      "model_id": "Alibaba-NLP/gte-Qwen1.5-7B-instruct",
-      "avg_score": 56.43,
-      "params_m": 6.477,
-      "license": "apache-2.0",
-      "updated": "2024-04-20",
-      "is_open": true,
-      "tasks": {
-        "retrieval": 49.61,
-        "clustering": 39.57,
-        "classification": 68.42,
-        "sts": 68.13
-      },
-      "embedding_dim": 4096,
       "dim_source": "mteb_api",
       "price_source": "unknown"
     }
