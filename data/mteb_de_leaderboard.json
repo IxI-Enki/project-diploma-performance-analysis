@@ -1,6 +1,6 @@
 {
   "schema_version": "2.0.0",
-  "generated_at": "2026-11-18T09:46:42+00:00",
+  "generated_at": "2026-11-19T09:56:21+00:00",
   "source": "mteb/deu-v1-api",
   "source_url": "https://mteb-leaderboard-backend.hf.space/v1/benchmarks/MTEB(deu,%20v1)/scores",
   "benchmark": "MTEB(deu, v1)",
@@ -71,7 +71,8 @@
       },
       "embedding_dim": 768,
       "dim_source": "mteb_api",
-      "price_source": "unknown"
+      "price_input_per_mtok": 0.02,
+      "price_source": "litellm"
     },
     {
       "model_id": "codefuse-ai/F2LLM-v2-1.7B",
@@ -139,7 +140,8 @@
       },
       "embedding_dim": 1024,
       "dim_source": "mteb_api",
-      "price_source": "unknown"
+      "price_input_per_mtok": 0.05,
+      "price_source": "litellm"
     },
     {
       "model_id": "Salesforce/SFR-Embedding-Mistral",
